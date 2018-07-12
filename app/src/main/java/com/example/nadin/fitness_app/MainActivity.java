@@ -1,3 +1,4 @@
+
 package com.example.nadin.fitness_app;
 
 import android.content.Intent;
@@ -66,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent start;
-                start = new Intent(getApplicationContext(), Main4Activity.class);
+                start = new Intent(getApplicationContext(), Main16Activity.class);
                 startActivity(start);
 
             }
