@@ -38,9 +38,11 @@
         <activity android:name=".Main13Activity" />
         <activity android:name=".Main14Activity" />
         <activity android:name=".Main15Activity" />
-        <activity android:name=".Main16Activity"
-                  android:windowSoftInputMode="adjustPan" />
-        <activity android:name=".ListTest"></activity>
+        <activity
+            android:name=".Main16Activity"
+            android:windowSoftInputMode="adjustPan" />
+        <activity android:name=".ListTest" />
+        <activity android:name=".Main17Activity"></activity>
     </application>
 
 </manifest>
