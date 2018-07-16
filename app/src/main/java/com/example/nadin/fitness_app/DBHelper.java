@@ -2,12 +2,17 @@ package com.example.nadin.fitness_app;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.icu.util.Measure;
+import android.util.Log;
+
+import java.util.ArrayList;
 
 public class DBHelper extends SQLiteOpenHelper {
 
-    private static final String DB_NAME = "DataInput";
+    private static final String DB_NAME = "com.example.nadin.fitness_app.DataInput";
     private static final int DB_VERSION = 1;
     private static final String TABLE_NAME = "Input_Table";
     private static final String COL_ID = "ID";
@@ -38,9 +43,29 @@ public class DBHelper extends SQLiteOpenHelper {
         mSqLiteDatabse.insert(TABLE_NAME, null, values);
         //closing the database
         mSqLiteDatabse.close();
+    }
+        //method for retrieving all the data stored in the database
+    public ArrayList<Measures> getAllWeight(){
+        ArrayList<Measures> measuresArrayList = new ArrayList<>();
+        mSqLiteDatabse = this.getReadableDatabase();
+        String select_all= "Select * from " + TABLE_NAME;
+        Cursor cursor= mSqLiteDatabse.rawQuery(select_all,null);
+        //checking the presence of the first row
+        if (cursor.moveToFirst()){
+            // do while loop for getting only the first row
+            do {
+                Measures measures = new Measures(cursor.getInt(0),cursor.getString(1), cursor.getString(2) );
+                measuresArrayList.add(measures);
 
 
+            } while(cursor.moveToNext()); //continue while cursor.moveToNext returns true
 
+
+        }
+
+
+        mSqLiteDatabse.close();
+        return measuresArrayList;
     }
 
 

@@ -3,8 +3,11 @@ package com.example.nadin.fitness_app;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
+import java.util.ArrayList;
+
 public class Main17Activity extends AppCompatActivity {
     DBHelper dbHelper;
+    ArrayList<Measures> measuresArrayList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,5 +23,6 @@ public class Main17Activity extends AppCompatActivity {
          * MODIFY: needs to take in editText values
          */
         dbHelper.insertWeight("45", "02/05/2018");
+       measuresArrayList = dbHelper.getAllWeight();
     }
 }
