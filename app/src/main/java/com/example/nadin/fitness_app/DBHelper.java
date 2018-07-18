@@ -37,22 +37,54 @@ public class DBHelper extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    public boolean insertWeight(String dbWeight, String dbDate){
+    public boolean insertWeight(String dbWeight, String dbDate) {
         mSqLiteDatabase = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(COL_NAME, dbWeight);
         values.put(COL_DATE, dbDate);
         //insert a single row of data into the database
-        long result =  mSqLiteDatabase.insert(TABLE_NAME, null, values);
-         if (result == -1){
-             return false;
-         }else {
-             return true;
-         }
-
+        long result = mSqLiteDatabase.insert(TABLE_NAME, null, values);
+        if (result == -1) {
+            return false;
+        } else {
+            return true;
+        }
         //closing the database
         //mSqLiteDatabase.close();
+
     }
+
+    /**
+     * method for showing the data within the database created
+     * @return data
+     */
+
+    public Cursor showData(){
+        mSqLiteDatabase=this.getWritableDatabase();
+        Cursor data = mSqLiteDatabase.rawQuery("SELECT * FROM " + TABLE_NAME, null);
+        return data;
+    }
+
+    /**
+     * method for updating/ deleting the database values
+     * @param id
+     * @param weight
+     * @param date
+     * @return
+     */
+    public boolean updateData(String id, String weight, String date){
+        mSqLiteDatabase=this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(COL_ID, id);
+        contentValues.put(COL_NAME, weight);
+        contentValues.put(COL_DATE, date);
+        mSqLiteDatabase.update(TABLE_NAME, contentValues, "ID = ?", new String[] {id});
+        return true;
+    }
+
+
+/**
+
         //method for retrieving all the data stored in the database
     public ArrayList<Measures> getAllWeight(){
         ArrayList<Measures> measuresArrayList = new ArrayList<>();
@@ -76,7 +108,7 @@ public class DBHelper extends SQLiteOpenHelper {
         mSqLiteDatabase.close();
         return measuresArrayList;
     }
-
+*/
 
 
 }
