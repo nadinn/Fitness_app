@@ -17,6 +17,7 @@ public class Main17Activity extends AppCompatActivity {
     Button addValue;
     Button seeValue;
     Button updateValue;
+    Button delete;
     EditText eweight, edate, eId;
 
     /**
@@ -33,7 +34,7 @@ public class Main17Activity extends AppCompatActivity {
          */
         dbHelper = new DBHelper(this);
         /**
-         * creating the edit text and button
+         * creating the edit texts and buttons
          */
         eweight=(EditText) findViewById(R.id.editText2);
         edate= (EditText) findViewById(R.id.editText6);
@@ -41,10 +42,13 @@ public class Main17Activity extends AppCompatActivity {
         seeValue = (Button) findViewById(R.id.button6);
         updateValue= (Button) findViewById(R.id.button7);
         eId = (EditText) findViewById(R.id.editText4);
+        delete = (Button) findViewById(R.id.button4);
 
         addData();
         viewData();
         UpdateData();
+        DeleteData();
+
 
 
 
@@ -162,4 +166,30 @@ public class Main17Activity extends AppCompatActivity {
 
     }
 
+    public void DeleteData(){
+        delete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                //checking the length of the input to determine if the user has typed an input
+                int temp = eId.getText().toString().length();
+                if (temp > 0) {
+                    Integer deleteTuple = dbHelper.deleteData(eId.getText().toString());
+                    if (deleteTuple > 0) {
+                        Toast.makeText(Main17Activity.this, "Row deleted", Toast.LENGTH_LONG).show();
+                    } else {
+                        Toast.makeText(Main17Activity.this, "Please enter a valid ID", Toast.LENGTH_LONG).show();
+                    }
+
+                } else {
+                    Toast.makeText(Main17Activity.this, "Please enter ID to delete", Toast.LENGTH_LONG).show();
+                }
+            }
+        });
+    }
+
 }
+
+/**
+ source: https://github.com/mitchtabian/SQLiteSaveUserData
+ */
