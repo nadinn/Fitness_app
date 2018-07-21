@@ -1,5 +1,6 @@
 package com.example.nadin.fitness_app;
 
+import android.content.Intent;
 import android.database.Cursor;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -10,10 +11,11 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 public class Main17Activity extends AppCompatActivity {
     DBHelper dbHelper;
-    ArrayList<Measures> measuresArrayList;
+
     Button addValue;
     Button seeValue;
     Button updateValue;
@@ -49,15 +51,20 @@ public class Main17Activity extends AppCompatActivity {
         UpdateData();
         DeleteData();
 
+        Button buttonE = (Button) findViewById(R.id.button8);
+        buttonE.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                Intent start;
+                start = new Intent(getApplicationContext(), Main18Activity.class);
+                startActivity(start);
+
+            }
+
+        });
 
 
 
-        /**
-         * calling the insert method from the DBHelper class
-
-         */
-        //dbHelper.insertWeight("45", "02/05/2018");
-       //measuresArrayList = dbHelper.getAllWeight();
     }
 
     /**
@@ -69,10 +76,11 @@ public class Main17Activity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                String weight = eweight.getText().toString();
-                String date = edate.getText().toString();
+               long weight = Long.parseLong(eweight.getText().toString());
+                //long date = new Date().getTime();
+                long date = Long.parseLong(edate.getText().toString());
                 //calling the method insertWeight from DBHelper to insert data into the database
-                boolean insertData = dbHelper.insertWeight(weight,date);
+                boolean insertData = dbHelper.insertData(weight,date);
 
                 //message displayed if data has been added correctly
                 if (insertData == true){
@@ -148,7 +156,7 @@ public class Main17Activity extends AppCompatActivity {
                 if (temp > 0 ){
                     //updating the database by using the updateData() from DBHelper and passing in the values from the EditTexts
                     boolean update = dbHelper.updateData(eId.getText().toString(),
-                            eweight.getText().toString(),edate.getText().toString());
+                           Long.parseLong( eweight.getText().toString()),Long.parseLong(edate.getText().toString()));
                     // message dispaly if the data was correctly updated or not
                     if (update == true){
                         Toast.makeText(Main17Activity.this, "Successfully updated database", Toast.LENGTH_LONG).show();
