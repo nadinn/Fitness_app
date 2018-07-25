@@ -37,11 +37,12 @@ public class DBHelper extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    public boolean insertData(long dbWeight, long dbDate) {
+    public boolean insertData(long dbDate,long dbWeight ) {
         mSqLiteDatabase = this.getWritableDatabase();
         ContentValues values = new ContentValues();
-        values.put(COL_NAME, dbWeight);
         values.put(COL_DATE, dbDate);
+        values.put(COL_NAME, dbWeight);
+
         //insert a single row of data into the database
         long result = mSqLiteDatabase.insert(TABLE_NAME, null, values);
         if (result == -1) {
@@ -72,12 +73,13 @@ public class DBHelper extends SQLiteOpenHelper {
      * @param date
      * @return
      */
-    public boolean updateData(String id, long weight, long date){
+    public boolean updateData(String id, long date, long weight){
         mSqLiteDatabase=this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put(COL_ID, id);
-        contentValues.put(COL_NAME, weight);
         contentValues.put(COL_DATE, date);
+        contentValues.put(COL_NAME, weight);
+
         mSqLiteDatabase.update(TABLE_NAME, contentValues, "ID = ?", new String[] {id});
         return true;
     }

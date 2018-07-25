@@ -7,6 +7,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
 
 
 import com.jjoe64.graphview.GraphView;
@@ -18,28 +20,81 @@ public class Main18Activity extends AppCompatActivity {
     DBHelper dbHelper;
     SQLiteDatabase db;
     GraphView graph;
-    LineGraphSeries<DataPoint> series;
-    Button seeB;
+    LineGraphSeries<DataPoint> series = new LineGraphSeries<>(new DataPoint[0]);
+    Button seeDataButton;
+    Button updateGraph, addValue;
+    EditText eweight, edate;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main18);
 
+        edate= (EditText) findViewById(R.id.editText7);
+        eweight=(EditText) findViewById(R.id.editText8);
 
-        seeB = (Button) findViewById(R.id.button9);
+        addValue = (Button) findViewById(R.id.button11);
+
+
+        seeDataButton = (Button) findViewById(R.id.button9);
+
         dbHelper = new DBHelper(this);
         db=dbHelper.getWritableDatabase();
 
         viewData1();
+        addData();
+
 
 
         graph = (GraphView)findViewById(R.id.graph2);
 
+        //series = new LineGraphSeries<DataPoint>(getData());
 
-        series = new LineGraphSeries<DataPoint>(getData());
 
 
+        //LineGraphSeries<DataPoint> series = new LineGraphSeries<>(new DataPoint[]{
+
+                /**
+                 * static datapoins for testing
+                */
+                //new DataPoint(0, 1),
+                //new DataPoint(1, 2),
+               // new DataPoint(2, 1.5)
+       // });
+
+        graph.addSeries(series);
+
+
+
+
+
+
+    }
+
+
+    public void addData(){
+        addValue.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                long date = Long.parseLong(String.valueOf(edate.getText()));
+                long weight = Long.parseLong(String.valueOf(eweight.getText()));
+                //long date = new Date().getTime();
+
+                //calling the method insertWeight from DBHelper to insert data into the database
+                boolean insertData = dbHelper.insertData(date, weight);
+
+                //message displayed if data has been added correctly
+                if (insertData == true){
+                    Toast.makeText(Main18Activity.this, "Data added ", Toast.LENGTH_LONG).show();
+                } else{
+                    Toast.makeText(Main18Activity.this, "Data not added ", Toast.LENGTH_LONG).show();
+
+                }
+                series.resetData(getData());
+
+            }
+        });
 
     }
 
@@ -47,7 +102,7 @@ public class Main18Activity extends AppCompatActivity {
 
     private DataPoint[] getData(){
         //reading the data from the database
-        String[] columns = {"COL_NAME","COL_DATE"};
+        String[] columns = {"COL_DATE","COL_NAME"};
         Cursor cursor = db.query("TABLE_NAME", columns, null,null, null, null, null);
 
         DataPoint [] dp = new DataPoint[cursor.getCount()];
@@ -56,7 +111,7 @@ public class Main18Activity extends AppCompatActivity {
 
         for(int i =0; i<cursor.getCount(); i++){
             cursor.moveToNext();
-            dp[i]=new DataPoint(cursor.getInt(0), cursor.getInt(1));
+            dp[i]=new DataPoint(cursor.getLong(1), cursor.getLong(2));
         }
         return dp;
 
@@ -65,7 +120,7 @@ public class Main18Activity extends AppCompatActivity {
 
 
     public void viewData1() {
-        seeB.setOnClickListener(new View.OnClickListener() {
+        seeDataButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Cursor data = dbHelper.showData();
@@ -78,8 +133,8 @@ public class Main18Activity extends AppCompatActivity {
                 StringBuffer buffer = new StringBuffer();
                 while (data.moveToNext()) {
                     buffer.append("ID:" + data.getString(0) + "\n");
-                    buffer.append("Weight: " + data.getString(1) + "\n");
-                    buffer.append("Date: " + data.getString(2) + "\n");
+                    buffer.append("Date: " + data.getString(1) + "\n");
+                    buffer.append("Weight: " + data.getString(2) + "\n");
 
                     // displaying a message when the data can be retrieved correctly
 
@@ -87,6 +142,9 @@ public class Main18Activity extends AppCompatActivity {
 
 
                 }
+
+
+
 
             }
         });

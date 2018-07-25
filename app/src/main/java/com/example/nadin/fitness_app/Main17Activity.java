@@ -76,11 +76,12 @@ public class Main17Activity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-               long weight = Long.parseLong(eweight.getText().toString());
+                long date = Long.parseLong(String.valueOf(edate.getText()));
+                long weight = Long.parseLong(String.valueOf(eweight.getText()));
                 //long date = new Date().getTime();
-                long date = Long.parseLong(edate.getText().toString());
+
                 //calling the method insertWeight from DBHelper to insert data into the database
-                boolean insertData = dbHelper.insertData(weight,date);
+                boolean insertData = dbHelper.insertData(date, weight);
 
                 //message displayed if data has been added correctly
                 if (insertData == true){
@@ -113,8 +114,8 @@ public class Main17Activity extends AppCompatActivity {
                 StringBuffer buffer = new StringBuffer();
                 while (data.moveToNext()){
                     buffer.append("ID:" + data.getString(0) + "\n");
-                    buffer.append("Weight: " + data.getString(1) + "\n");
-                    buffer.append("Date: " + data.getString(2) + "\n");
+                    buffer.append("Date: " + data.getString(1) + "\n");
+                    buffer.append("Weight: " + data.getString(2) + "\n");
 
                     // displaying a message when the data can be retrieved correctly
 
