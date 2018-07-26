@@ -76,8 +76,8 @@ public class Main17Activity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                long date = Long.parseLong(String.valueOf(edate.getText()));
-                long weight = Long.parseLong(String.valueOf(eweight.getText()));
+                String date = String.valueOf(edate.getText());
+                String weight =String.valueOf(eweight.getText());
                 //long date = new Date().getTime();
 
                 //calling the method insertWeight from DBHelper to insert data into the database
@@ -157,7 +157,7 @@ public class Main17Activity extends AppCompatActivity {
                 if (temp > 0 ){
                     //updating the database by using the updateData() from DBHelper and passing in the values from the EditTexts
                     boolean update = dbHelper.updateData(eId.getText().toString(),
-                           Long.parseLong( eweight.getText().toString()),Long.parseLong(edate.getText().toString()));
+                         ( eweight.getText().toString()),(edate.getText().toString()));
                     // message dispaly if the data was correctly updated or not
                     if (update == true){
                         Toast.makeText(Main17Activity.this, "Successfully updated database", Toast.LENGTH_LONG).show();
@@ -174,6 +174,7 @@ public class Main17Activity extends AppCompatActivity {
         });
 
     }
+
 
     public void DeleteData(){
         delete.setOnClickListener(new View.OnClickListener() {

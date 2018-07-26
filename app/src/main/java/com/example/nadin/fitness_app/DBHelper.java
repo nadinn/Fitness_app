@@ -25,8 +25,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        String create_table = "CREATE TABLE " + TABLE_NAME + "(" + COL_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + COL_NAME + " LONG, " + COL_DATE + " LONG ); ";
-
+        String create_table = "CREATE TABLE " + TABLE_NAME + "(" + COL_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + COL_DATE + " TEXT, " + COL_NAME + " TEXT ); ";
         db.execSQL(create_table);
 
     }
@@ -37,7 +36,7 @@ public class DBHelper extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    public boolean insertData(long dbDate,long dbWeight ) {
+    public boolean insertData(String dbDate, String dbWeight ) {
         mSqLiteDatabase = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(COL_DATE, dbDate);
@@ -51,7 +50,8 @@ public class DBHelper extends SQLiteOpenHelper {
             return true;
         }
         //closing the database
-        //mSqLiteDatabase.close();
+
+
 
     }
 
@@ -68,23 +68,25 @@ public class DBHelper extends SQLiteOpenHelper {
 
     /**
      * method for updating/ deleting the database values
-     * @param id
+
      * @param weight
      * @param date
      * @return
      */
-    public boolean updateData(String id, long date, long weight){
+    public boolean updateData( String id,  String date, String weight){
+
         mSqLiteDatabase=this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put(COL_ID, id);
         contentValues.put(COL_DATE, date);
         contentValues.put(COL_NAME, weight);
-
         mSqLiteDatabase.update(TABLE_NAME, contentValues, "ID = ?", new String[] {id});
+
         return true;
     }
 
     public Integer deleteData(String id){
+        //public Integer deleteData(String id){
         mSqLiteDatabase=this.getWritableDatabase();
         return mSqLiteDatabase.delete(TABLE_NAME, "ID = ?", new String[] {id});
     }
