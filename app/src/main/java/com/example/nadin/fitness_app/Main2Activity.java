@@ -34,9 +34,11 @@ public class Main2Activity extends AppCompatActivity {
         loadWeight();
         /**
          * creating button that saves whatever is written in the edit text
+         *
          */
         final Button saveWeight = (Button) findViewById(R.id.saveWeight);
         final EditText editText = (EditText) findViewById(R.id.editWeight1);
+
         if (saveWeight != null) {
             saveWeight.setOnClickListener(new View.OnClickListener() {
                 @Override

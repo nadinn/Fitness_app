@@ -44,7 +44,7 @@
         <activity android:name=".ListTest" />
         <activity android:name=".Main17Activity" />
         <activity android:name=".Main18Activity" />
-        <activity android:name=".Main19Activity"></activity>
+        <activity android:name=".Main19Activity" />
     </application>
 
 </manifest>

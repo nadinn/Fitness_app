@@ -1,5 +1,6 @@
 package com.example.nadin.fitness_app;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.support.v7.app.AlertDialog;
@@ -14,13 +15,13 @@ import java.util.ArrayList;
 import java.util.Date;
 
 public class Main17Activity extends AppCompatActivity {
-    DBHelper dbHelper;
+    MyHelper myHelper;
 
     Button addValue;
     Button seeValue;
     Button updateValue;
     Button delete;
-    EditText eweight, edate, eId;
+    EditText xValue, yValue, idValue;
 
     /**
      * method created automatically when the class is created
@@ -34,19 +35,20 @@ public class Main17Activity extends AppCompatActivity {
         /**
          * calling the database helper class
          */
-        dbHelper = new DBHelper(this);
+        myHelper = new MyHelper(this);
         /**
          * creating the edit texts and buttons
          */
-        eweight=(EditText) findViewById(R.id.editText2);
-        edate= (EditText) findViewById(R.id.editText6);
+
+        xValue= (EditText) findViewById(R.id.editText6);
+        yValue=(EditText) findViewById(R.id.editText2);
         addValue = (Button) findViewById(R.id.button5);
         seeValue = (Button) findViewById(R.id.button6);
         updateValue= (Button) findViewById(R.id.button7);
-        eId = (EditText) findViewById(R.id.editText4);
+        idValue = (EditText) findViewById(R.id.editText4);
         delete = (Button) findViewById(R.id.button4);
 
-        addData();
+        //addData();
         viewData();
         UpdateData();
         DeleteData();
@@ -56,7 +58,7 @@ public class Main17Activity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent start;
-                start = new Intent(getApplicationContext(), Main18Activity.class);
+                start = new Intent(getApplicationContext(), Main19Activity.class);
                 startActivity(start);
 
             }
@@ -69,7 +71,7 @@ public class Main17Activity extends AppCompatActivity {
 
     /**
      * method for adding data to the database from the two EditText
-     */
+
 
     public void addData(){
         addValue.setOnClickListener(new View.OnClickListener() {
@@ -81,7 +83,7 @@ public class Main17Activity extends AppCompatActivity {
                 //long date = new Date().getTime();
 
                 //calling the method insertWeight from DBHelper to insert data into the database
-                boolean insertData = dbHelper.insertData(date, weight);
+                boolean insertData = myHelper.insertData(date, weight);
 
                 //message displayed if data has been added correctly
                 if (insertData == true){
@@ -96,6 +98,7 @@ public class Main17Activity extends AppCompatActivity {
         });
 
     }
+     */
 
     /**
      * method for seeing the data inserted within the database
@@ -104,26 +107,29 @@ public class Main17Activity extends AppCompatActivity {
         seeValue.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Cursor data = dbHelper.showData();
+                Cursor data = myHelper.showData();
                 // displaying an error message if no data is present using the display() method created
                 if (data.getCount() == 0){
-                    dispay("Error", "No data has been found");
+                    display("Error", "No data has been found");
                     return;
                 }
                 // buffer used to view contents in the database
                 StringBuffer buffer = new StringBuffer();
-                while (data.moveToNext()){
+                while (data.moveToNext()) {
+
                     buffer.append("ID:" + data.getString(0) + "\n");
-                    buffer.append("Date: " + data.getString(1) + "\n");
-                    buffer.append("Weight: " + data.getString(2) + "\n");
-
-                    // displaying a message when the data can be retrieved correctly
-
-                    dispay("All data",  buffer.toString());
+                    buffer.append("Date: " + Integer.parseInt(data.getString(1)) + "\n");
+                    buffer.append("Weight: " + Integer.parseInt(data.getString(2)) + "\n");
 
 
 
                 }
+                // displaying the message when the data can be retrieved correctly
+                display("All data",  buffer.toString());
+
+
+
+
 
             }
         });
@@ -135,12 +141,24 @@ public class Main17Activity extends AppCompatActivity {
      * @param title
      * @param message
      */
-    public void dispay(String title, String message){
+    public void display(String title, String message){
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setCancelable(true);
+
         builder.setTitle(title);
         builder.setMessage(message);
-        builder.show();
+        builder.setCancelable(false);
+
+        builder.setNegativeButton("Exit", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                dialogInterface.cancel();
+            }
+        });
+       builder.show();
+
+        //builder.show();
+
+
 
     }
 
@@ -153,12 +171,12 @@ public class Main17Activity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 //checking if the id is actually entered for the update
-                int temp = eId.getText().toString().length();
+                int temp = idValue.getText().toString().length();
                 if (temp > 0 ){
                     //updating the database by using the updateData() from DBHelper and passing in the values from the EditTexts
-                    boolean update = dbHelper.updateData(eId.getText().toString(),
-                         ( eweight.getText().toString()),(edate.getText().toString()));
-                    // message dispaly if the data was correctly updated or not
+                    boolean update = myHelper.updateData(idValue.getText().toString(),Integer.parseInt(xValue.getText().toString()),
+                            Integer.parseInt(yValue.getText().toString()));
+                    // message displaly if the data was correctly updated or not
                     if (update == true){
                         Toast.makeText(Main17Activity.this, "Successfully updated database", Toast.LENGTH_LONG).show();
                     }else{
@@ -181,10 +199,11 @@ public class Main17Activity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
+
                 //checking the length of the input to determine if the user has typed an input
-                int temp = eId.getText().toString().length();
+                int temp = idValue.getText().toString().length();
                 if (temp > 0) {
-                    Integer deleteTuple = dbHelper.deleteData(eId.getText().toString());
+                    Integer deleteTuple = myHelper.deleteData(idValue.getText().toString());
                     if (deleteTuple > 0) {
                         Toast.makeText(Main17Activity.this, "Row deleted", Toast.LENGTH_LONG).show();
                     } else {

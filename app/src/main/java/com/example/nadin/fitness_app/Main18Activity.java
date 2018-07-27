@@ -1,3 +1,9 @@
+/**
+
+ NOT IN USE !!!
+
+
+
 package com.example.nadin.fitness_app;
 
 import android.database.Cursor;
@@ -24,6 +30,7 @@ public class Main18Activity extends AppCompatActivity {
     SQLiteDatabase db;
 
     Button seeDataButton;
+    Button aaa = (Button) findViewById(R.id.aaa);
     //ArrayList<String> xx = new ArrayList<>(getXAxis());
     //ArrayList<String> yy = new ArrayList<>(getYAxis());
 
@@ -35,6 +42,7 @@ public class Main18Activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main18);
         //getXAxis();
+
 
 
 
@@ -55,7 +63,7 @@ public class Main18Activity extends AppCompatActivity {
 
         /** static datapoins for testing
          */
-
+/**
         //series = new LineGraphSeries<DataPoint>(getData());
         //LineGraphSeries<DataPoint> series = new LineGraphSeries<>(new DataPoint[]{
 
@@ -197,4 +205,4 @@ public class Main18Activity extends AppCompatActivity {
 
 
 
-}
+
