@@ -1,6 +1,7 @@
 package com.example.nadin.fitness_app;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AlertDialog;
@@ -16,7 +17,7 @@ import com.jjoe64.graphview.series.DataPoint;
 import com.jjoe64.graphview.series.LineGraphSeries;
 
 public class Main19Activity extends AppCompatActivity {
-    Button input, viewData;
+    Button input, viewData, modify;
     EditText inp1, inp2;
     GraphView graph;
     LineGraphSeries<DataPoint> series;
@@ -34,9 +35,20 @@ public class Main19Activity extends AppCompatActivity {
         myHelper = new MyHelper(this);
         sqLiteDatabase = myHelper.getWritableDatabase();
         graph = (GraphView)findViewById(R.id.graph2);
+        modify= (Button) findViewById(R.id.button12);
         
         inputMethod();
         viewData();
+
+        modify.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent start;
+                start = new Intent(getApplicationContext(), Main17Activity.class);
+                startActivity(start);
+
+            }
+        });
 
 
 

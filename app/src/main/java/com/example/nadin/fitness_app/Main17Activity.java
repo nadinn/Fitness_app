@@ -42,7 +42,7 @@ public class Main17Activity extends AppCompatActivity {
 
         xValue= (EditText) findViewById(R.id.editText6);
         yValue=(EditText) findViewById(R.id.editText2);
-        addValue = (Button) findViewById(R.id.button5);
+        //addValue = (Button) findViewById(R.id.button5);
         seeValue = (Button) findViewById(R.id.button6);
         updateValue= (Button) findViewById(R.id.button7);
         idValue = (EditText) findViewById(R.id.editText4);
