@@ -198,8 +198,6 @@ public class Main17Activity extends AppCompatActivity {
         delete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-
                 //checking the length of the input to determine if the user has typed an input
                 int temp = idValue.getText().toString().length();
                 if (temp > 0) {

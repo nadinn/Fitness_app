@@ -45,6 +45,7 @@
         <activity android:name=".Main17Activity" />
         <activity android:name=".Main18Activity" />
         <activity android:name=".Main19Activity" />
+        <activity android:name=".Main20Activity"></activity>
     </application>
 
 </manifest>
