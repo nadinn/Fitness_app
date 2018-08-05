@@ -45,7 +45,11 @@
         <activity android:name=".Main17Activity" />
         <activity android:name=".Main18Activity" />
         <activity android:name=".Main19Activity" />
-        <activity android:name=".Main20Activity"></activity>
+        <activity android:name=".Main20Activity" />
+        <activity android:name=".Main21Activity" />
+        <activity android:name=".Main22Activity" />
+        <activity android:name=".Main23Activity" />
+        <activity android:name=".Main24Activity"></activity>
     </application>
 
 </manifest>
