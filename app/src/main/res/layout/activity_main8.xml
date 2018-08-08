@@ -44,6 +44,24 @@
         app:layout_constraintVertical_bias="0.7" />
 
     <Button
+        android:id="@+id/go1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="36dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="36dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="VIEW PROGRESS"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.995"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.498" />
+
+    <Button
         android:id="@+id/go"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -125,21 +143,4 @@
         app:layout_constraintVertical_bias="0.779"
         app:srcCompat="@drawable/abs4" />
 
-    <Button
-        android:id="@+id/go1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="36dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="36dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:text="VIEW PROGRESS"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.995"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.498" />
 </android.support.constraint.ConstraintLayout>

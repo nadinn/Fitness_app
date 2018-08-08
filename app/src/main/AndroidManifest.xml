@@ -49,7 +49,31 @@
         <activity android:name=".Main21Activity" />
         <activity android:name=".Main22Activity" />
         <activity android:name=".Main23Activity" />
-        <activity android:name=".Main24Activity"></activity>
+        <activity android:name=".Main24Activity" />
+        <activity android:name=".Main25Activity" />
+        <activity android:name=".Main26Activity" />
+        <activity android:name=".Main27Activity" />
+        <activity android:name=".Main28Activity" />
+        <activity android:name=".Main29Activity" />
+        <activity android:name=".Main30Activity" />
+        <activity android:name=".Main31Activity" />
+        <activity android:name=".Main32Activity" />
+        <activity android:name=".Main33Activity" />
+        <activity android:name=".Main34Activity" />
+        <activity android:name=".Main35Activity" />
+        <activity android:name=".Main36Activity" />
+        <activity android:name=".Main37Activity" />
+        <activity android:name=".Main38Activity" />
+        <activity android:name=".Main39Activity" />
+        <activity android:name=".Main40Activity" />
+        <activity android:name=".Main41Activity" />
+        <activity android:name=".Main42Activity" />
+        <activity android:name=".Main43Activity" />
+        <activity android:name=".Main44Activity" />
+        <activity android:name=".Main45Activity" />
+        <activity android:name=".Main46Activity" />
+        <activity android:name=".Main47Activity" />
+        <activity android:name=".Main48Activity"></activity>
     </application>
 
 </manifest>
