@@ -1,10 +1,14 @@
 package com.example.nadin.fitness_app;
 
+import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 public class Main7Activity extends AppCompatActivity {
 
@@ -12,6 +16,7 @@ public class Main7Activity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main7);
+
 
         /**
         * creating buttonAbs and finding it by id from xml
@@ -21,13 +26,15 @@ public class Main7Activity extends AppCompatActivity {
         /**
          * setting an onClick listener to the button for new Activity
          */
+
         buttonAbs.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
                 Intent start = new Intent(getApplicationContext(), Main8Activity.class);
                 startActivity(start);
 
-            }
+
+                }
 
 
         });
@@ -152,4 +159,8 @@ public class Main7Activity extends AppCompatActivity {
 
 
     }
+
+
+
+
 }
