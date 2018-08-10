@@ -75,7 +75,8 @@
         <activity android:name=".Main47Activity" />
         <activity android:name=".Main48Activity" />
         <activity android:name=".Main49Activity" />
-        <activity android:name=".Main50Activity"></activity>
+        <activity android:name=".Main50Activity" />
+        <activity android:name=".Main51Activity"></activity>
     </application>
 
 </manifest>
