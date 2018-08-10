@@ -1,3 +1,4 @@
+/**
 package com.example.nadin.fitness_app;
 
 import android.content.ContentValues;
@@ -42,40 +43,16 @@ public class MyHelperStats extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    public boolean insertData() {
-    SQLiteDatabase db = this.getWritableDatabase();
-    ContentValues values = new ContentValues();
-        values.put(ABSVALUES,0);
-        values.put(BACKVALUES,0);
-        values.put(BICEPSVALUES,0);
-        values.put(CHESTVALUES,0);
-        values.put(GLUTESVALUES,0);
-        values.put(QUADSVALUES,0);
-        values.put(TRICEPSVALUES,0);
-    long result = db.insert(TABLE_NAME, null, values);
-        if(result ==-1)
 
-    {
-        return false;
-    } else
+    public boolean updateDataAbs(String id, int x){
+        mySqLiteDatabase=this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(IDVALUES, id);
+        contentValues.put(ABSVALUES, x);
+        mySqLiteDatabase.update(TABLE_NAME, contentValues, "ID = ?", new String[] {id});
 
-    {
         return true;
     }
-
-}
-
-
-
-
-    public void updateAbs(String id) {
-        SQLiteDatabase db = this.getWritableDatabase();
-
-    db.execSQL("UPDATE " + TABLE_NAME  + " SET " + ABSVALUES + "=" + ABSVALUES + "+1" + " WHERE " + IDVALUES + "=?",
-            new String[] { String.valueOf(id) } );
-
-    }
-
 
     public Cursor showData(){
         mySqLiteDatabase=this.getWritableDatabase();
@@ -85,3 +62,4 @@ public class MyHelperStats extends SQLiteOpenHelper {
 
 
 }
+ */

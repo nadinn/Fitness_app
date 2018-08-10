@@ -1,20 +1,24 @@
+/**
+ * activity for testing sharedPreferences
+ */
+
 package com.example.nadin.fitness_app;
 
-import android.content.DialogInterface;
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
-import android.support.v7.app.AlertDialog;
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
-import com.jjoe64.graphview.series.DataPoint;
+
 
 public class Main49Activity extends AppCompatActivity {
-    Button viewData, update;
-    MyHelperStats myHelper;
-    SQLiteDatabase sqLiteDatabase;
+    Button update, update2, send;
+    TextView t1, t2;
+    int counter1, counter2;
 
 
     @Override
@@ -22,81 +26,75 @@ public class Main49Activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main49);
 
-        viewData =(Button) findViewById(R.id.button5);
-        update = (Button) findViewById(R.id.button13);
-        myHelper = new MyHelperStats(this);
-        sqLiteDatabase = myHelper.getWritableDatabase();
 
-        viewData();
-        inputData();
+        t1 = (TextView) findViewById(R.id.textCount);
+        t2 = (TextView) findViewById(R.id.textView9);
+
+        final SharedPreferences preferences = getApplicationContext().getSharedPreferences("counterStatistics", Context.MODE_PRIVATE);
+        final SharedPreferences.Editor edit = preferences.edit();
+        //t1.setText(String.valueOf(preferences.getInt("counter",0)));
+        counter1 = preferences.getInt("counter1", 0);
+        counter2 = preferences.getInt("counter2", 0);
+        t1.setText(String.valueOf(counter1));
+        t2.setText(String.valueOf(counter2));
+
+
+        update = (Button) findViewById(R.id.button13);
+        update2 = (Button) findViewById(R.id.button14);
+        send = (Button) findViewById(R.id.button15);
+
+        send.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent start;
+                start = new Intent(getApplicationContext(), Main50Activity.class);
+                startActivity(start);
+
+            }
+
+        });
+
 
         update.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String i = Integer.toString(1);
-                 myHelper.updateAbs(i);
+                int counter1 = preferences.getInt("counter1", 0);
+                counter1 = counter1 + 1;
+                edit.putInt("counter1", counter1).commit();
+                //String strCounter = Integer.toString(counter);
+                //t1.setText(strCounter);
+
             }
         });
 
 
-    }
-
-    public void viewData() {
-        viewData.setOnClickListener(new View.OnClickListener() {
+        update2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Cursor data = myHelper.showData();
-                 //displaying an error message if no data is present using the display() method created
-                if (data.getCount() == 0) {
-                    display("Error", "No data has been found");
-                    return;
-                }
-                 //buffer used to view contents in the database
-                StringBuffer buffer = new StringBuffer();
-                while (data.moveToNext()) {
-
-                    buffer.append("ID:" + data.getString(0) + "\n");
-                    buffer.append("Abs: " + Integer.parseInt(data.getString(1)) + "\n");
-                    //buffer.append("Back : " + Integer.parseInt(data.getString(2)) + "\n");
-                    //buffer.append("Biceps : " + Integer.parseInt(data.getString(3)) + "\n");
-                    //buffer.append("Chest : " + Integer.parseInt(data.getString(4)) + "\n");
-                    //buffer.append("Glutes : " + Integer.parseInt(data.getString(5)) + "\n");
-                    //buffer.append("Quads: " + Integer.parseInt(data.getString(6)) + "\n");
-                    //buffer.append("Triceps : " + Integer.parseInt(data.getString(7)) + "\n");
-
-
-
-                }
-                // displaying the message when the data can be retrieved correctly
-                display("All data", buffer.toString());
-
-
-
+                int counter2 = preferences.getInt("counter2", 0);
+                counter2 = counter2 + 1;
+                edit.putInt("counter2", counter2).commit();
 
             }
         });
-    }
-
-    public void display(String title, String message){
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle(title);
-        builder.setMessage(message);
-        builder.setCancelable(false);
-
-        builder.setNegativeButton("Exit", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-                dialogInterface.cancel();
-            }
-        });
-        builder.show();
 
     }
 
-    public void inputData(){
-        myHelper.insertData();
+}
+/**
+        int value1=counter1;
+        Intent i = new Intent(Main49Activity.this, Main50Activity.class);
+        i.putExtra("key1",value1);
+        startActivity(i);
+
     }
 
 
 
 }
+
+/**
+ * source: https://stackoverflow.com/questions/12779605/sharedpreferences-and-emulator
+ * https://developer.android.com/training/data-storage/shared-preferences
+ *
+ */
