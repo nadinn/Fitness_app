@@ -14,6 +14,7 @@ public class Main50Activity extends AppCompatActivity {
     int counter1;
     Button go;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,17 +39,6 @@ public class Main50Activity extends AppCompatActivity {
         t1=(TextView)findViewById(R.id.textView8);
         t1.setText(String.valueOf(counter1));
 
-
-        /**
-        Bundle extras = getIntent().getExtras();
-        if (extras != null) {
-            value1 = extras.getInt("key1");
-
-
-
-
-        }
-         */
 
 
 

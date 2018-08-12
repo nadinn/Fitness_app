@@ -7,7 +7,7 @@
     tools:context=".Main51Activity">
 
     <com.github.mikephil.charting.charts.PieChart
-        android:id="@+id/idPieChart"
+        android:id="@+id/pieChart1"
         android:layout_width="match_parent"
         android:layout_height="match_parent"></com.github.mikephil.charting.charts.PieChart>
 </android.support.constraint.ConstraintLayout>
