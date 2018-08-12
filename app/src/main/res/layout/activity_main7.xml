@@ -7,7 +7,7 @@
     tools:context=".MainActivity"
     tools:layout_editor_absoluteY="81dp"
 
-    android:background="@drawable/backg2">
+    android:background="@drawable/backg3">
 
     <ImageButton
         android:id="@+id/imageButton"

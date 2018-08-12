@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">FitnessApp1</string>
+    <string name="app_name">FitnessApp</string>
     <string name="button1"><b>Progress</b></string>
     <string name="button2"><b>Exercise</b></string>
     <string name="button3"><b>Statistics</b></string>

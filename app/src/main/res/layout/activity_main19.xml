@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Main19Activity"
-    android:background="@drawable/backg2">
+    android:background="@drawable/backg3">
 
 
     <com.jjoe64.graphview.GraphView
@@ -31,7 +31,7 @@
         android:layout_marginRight="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
-        android:background="@android:color/darker_gray"
+        android:background="@android:color/background_light"
         android:ems="10"
         android:hint="date"
         android:inputType="textPersonName"
@@ -52,7 +52,7 @@
         android:layout_marginRight="8dp"
         android:layout_marginStart="24dp"
         android:layout_marginTop="8dp"
-        android:background="@android:color/darker_gray"
+        android:background="@android:color/background_light"
         android:ems="10"
         android:hint="weight"
         android:inputType="textPersonName"
@@ -61,7 +61,8 @@
         app:layout_constraintHorizontal_bias="0.033"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.202" />
+        app:layout_constraintVertical_bias="0.202"
+        tools:background="@android:color/background_light" />
 
     <Button
         android:id="@+id/button10"

@@ -6,11 +6,15 @@ import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+
+import com.github.mikephil.charting.animation.Easing;
 import com.github.mikephil.charting.charts.PieChart;
 import com.github.mikephil.charting.components.Legend;
 import com.github.mikephil.charting.data.PieData;
 import com.github.mikephil.charting.data.PieDataSet;
 import com.github.mikephil.charting.data.PieEntry;
+import com.github.mikephil.charting.utils.ColorTemplate;
+
 import java.util.ArrayList;
 
 
@@ -49,7 +53,9 @@ public class Main51Activity extends AppCompatActivity {
         pieChart.setHoleRadius(20f);
         pieChart.setTransparentCircleAlpha(10);
         pieChart.setCenterText("Usage Statistics");
-        pieChart.setCenterTextSize(10);
+        pieChart.setCenterTextSize(15);
+        pieChart.setCenterTextColor(Color.BLACK);
+        pieChart.animateY(2000, Easing.EasingOption.EaseOutCubic);
 
 
 
@@ -63,7 +69,7 @@ public class Main51Activity extends AppCompatActivity {
 
         // adding the data from yData to a new arrayList and to the pie chart
         for(int i=0; i<yData.length; i++){
-            yEntry.add(new PieEntry(yData[i], i ));
+            yEntry.add(new PieEntry(yData[i], xData[i] ));
         }
 
         // adding the data from xData to a new arrayList
@@ -72,19 +78,20 @@ public class Main51Activity extends AppCompatActivity {
         }
 
         //creating the dataset
-        PieDataSet pieDataSet = new PieDataSet(yEntry, "type of exercise");
+        PieDataSet pieDataSet = new PieDataSet(yEntry, "Type of exercise");
         pieDataSet.setSliceSpace(2);
-        pieDataSet.setValueTextSize(12);
+        pieDataSet.setValueTextSize(17);
+
 
         //add data colours
 
         ArrayList<Integer> colors = new ArrayList<>();
-        colors.add(Color.MAGENTA);
+        colors.add(Color.DKGRAY);
         colors.add(Color.BLUE);
         colors.add(Color.GRAY);
         colors.add(Color.CYAN);
-        colors.add(Color.YELLOW);
-        colors.add(Color.WHITE);
+        colors.add(Color.RED);
+        colors.add(Color.LTGRAY);
         colors.add(Color.GREEN);
 
         pieDataSet.setColors(colors);
@@ -94,11 +101,18 @@ public class Main51Activity extends AppCompatActivity {
         Legend legend= pieChart.getLegend();
         legend.setForm(Legend.LegendForm.CIRCLE);
         legend.setPosition(Legend.LegendPosition.RIGHT_OF_CHART);
+        pieChart.getLegend().setTextColor(Color.BLACK);
+        pieChart.setEntryLabelColor(Color.BLACK);
+        pieChart.setEntryLabelTextSize(17f);
+
+
 
         // create the pie chart data object
         PieData pieData = new PieData(pieDataSet);
         pieChart.setData(pieData);
         pieChart.invalidate();
+        pieData.setValueTextSize(15f);
+        pieData.setValueTextColor(Color.BLACK);
 
         ///////////////////
 
