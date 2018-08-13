@@ -53,6 +53,8 @@ public class Main17Activity extends AppCompatActivity {
         UpdateData();
         DeleteData();
 
+        /**
+
         Button buttonE = (Button) findViewById(R.id.button8);
         buttonE.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -64,6 +66,7 @@ public class Main17Activity extends AppCompatActivity {
             }
 
         });
+         */
 
 
 
@@ -117,7 +120,7 @@ public class Main17Activity extends AppCompatActivity {
                 StringBuffer buffer = new StringBuffer();
                 while (data.moveToNext()) {
 
-                    buffer.append("ID:" + data.getString(0) + "\n");
+                    buffer.append("Entry:" + data.getString(0) + "\n");
                     buffer.append("Date: " + Integer.parseInt(data.getString(1)) + "\n");
                     buffer.append("Weight: " + Integer.parseInt(data.getString(2)) + "\n");
 

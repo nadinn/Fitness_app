@@ -60,6 +60,7 @@ public class Main19Activity extends AppCompatActivity {
 
 
 
+
     }/**
      * method for adding data to the database from the two EditText
      */
@@ -122,7 +123,7 @@ public class Main19Activity extends AppCompatActivity {
                 StringBuffer buffer = new StringBuffer();
                 while (data.moveToNext()) {
 
-                    buffer.append("ID:" + data.getString(0) + "\n");
+                    buffer.append("Entry:" + data.getString(0) + "\n");
                     buffer.append("Date: " + Integer.parseInt(data.getString(1)) + "\n");
                     buffer.append("Weight: " + Integer.parseInt(data.getString(2)) + "\n");
 
