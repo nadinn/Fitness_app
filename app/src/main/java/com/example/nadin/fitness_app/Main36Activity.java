@@ -89,7 +89,7 @@ import com.jjoe64.graphview.series.LineGraphSeries;
 
         private DataPoint[] getData(){
             String[] columns = {"xValues","yValues"};
-            Cursor cursor = sqLiteDatabase.query("MyTable4", columns, null, null, null, null, null);
+            Cursor cursor = sqLiteDatabase.query("MyTable4", columns, null, null, null, null, "xValues");
             DataPoint[] dp = new DataPoint[cursor.getCount()];
 
             for(int i=0; i<cursor.getCount(); i++){

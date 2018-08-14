@@ -6,19 +6,17 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-public class MyHelper extends SQLiteOpenHelper {
-    private static final String DB_NAME = "MyDatabaseZ1";
+public class MyHelperDates extends SQLiteOpenHelper {
+    private static final String DB_NAME = "MyDatabase5";
     private static final String IDVALUES = "ID";
     private static final String XVALUES = "xValues";
     private static final String YVALUES = "yValues";
-    private static final String ZVALUES = "zValues";
     private static final String TABLE_NAME = "MyTable";
     SQLiteDatabase mySqLiteDatabase;
     private Context con;
 
 
-
-    public MyHelper(Context context) {
+    public MyHelperDates(Context context) {
         super(context, DB_NAME, null, 1);
         con = context;
     }
@@ -26,8 +24,8 @@ public class MyHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-
-        String createTable = "CREATE TABLE " + TABLE_NAME + "(" + IDVALUES + " INTEGER PRIMARY KEY AUTOINCREMENT, " + XVALUES + " INTEGER, " + YVALUES + " INTEGER, " + ZVALUES + " STRING ); ";
+        //String createTable = "create table TABLE_NAME (idValues INTEGER PRIMARY KEY AUTOINCREMENT, xValues INTEGER, yValues INTEGER);";
+        String createTable = "CREATE TABLE " + TABLE_NAME + "(" + IDVALUES + " INTEGER PRIMARY KEY AUTOINCREMENT, " + XVALUES + " INTEGER, " + YVALUES + " INTEGER ); ";
         db.execSQL(createTable);
 
     }
@@ -39,13 +37,11 @@ public class MyHelper extends SQLiteOpenHelper {
 
     }
 
-    public boolean insertData(int x, int y, String z) {
+    public boolean insertData(int x, int y) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
-
         values.put(XVALUES, x);
         values.put(YVALUES, y);
-        values.put(ZVALUES, z);
         long result = db.insert(TABLE_NAME, null, values);
         if (result == -1) {
             return false;
@@ -60,13 +56,12 @@ public class MyHelper extends SQLiteOpenHelper {
         return data;
     }
 
-    public boolean updateData(String id, int x, int y, String z){
+    public boolean updateData(String id, int x, int y){
         mySqLiteDatabase=this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put(IDVALUES, id);
         contentValues.put(XVALUES, x);
         contentValues.put(YVALUES, y);
-        contentValues.put(ZVALUES, z);
 
         mySqLiteDatabase.update(TABLE_NAME, contentValues, "ID = ?", new String[] {id});
 
@@ -79,4 +74,5 @@ public class MyHelper extends SQLiteOpenHelper {
     }
 
 }
+
 

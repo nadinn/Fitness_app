@@ -90,7 +90,7 @@ public class Main21Activity extends AppCompatActivity {
 
     private DataPoint[] getData(){
         String[] columns = {"xValues","yValues"};
-        Cursor cursor = sqLiteDatabase.query("MyTable1", columns, null, null, null, null, null);
+        Cursor cursor = sqLiteDatabase.query("MyTable1", columns, null, null, null, null, "xValues");
         DataPoint[] dp = new DataPoint[cursor.getCount()];
 
         for(int i=0; i<cursor.getCount(); i++){

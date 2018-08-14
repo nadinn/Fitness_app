@@ -1,6 +1,8 @@
 package com.example.nadin.fitness_app;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -13,6 +15,9 @@ public class Main14Activity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main14);
+
+        final SharedPreferences preferences = getApplicationContext().getSharedPreferences("counterStatistics2", Context.MODE_PRIVATE);
+        final SharedPreferences.Editor edit = preferences.edit();
 
         // creating new buttons
         ImageButton tri1 = (ImageButton) findViewById(R.id.imageButton32);
@@ -29,6 +34,9 @@ public class Main14Activity extends AppCompatActivity {
             @Override public void onClick(View view){
                 Intent start = new Intent(getApplicationContext(), Main20Activity.class);
                 startActivity(start);
+                int counterTri1 = preferences.getInt("counterTri1", 0);
+                counterTri1 = counterTri1 + 1;
+                edit.putInt("counterTri1", counterTri1).commit();
             }
         });
 
@@ -36,6 +44,9 @@ public class Main14Activity extends AppCompatActivity {
             @Override public void onClick(View view){
                 Intent start = new Intent(getApplicationContext(), Main20Activity.class);
                 startActivity(start);
+                int counterTri2 = preferences.getInt("counterTri2", 0);
+                counterTri2 = counterTri2 + 1;
+                edit.putInt("counterTri2", counterTri2).commit();
             }
         });
 
@@ -43,6 +54,9 @@ public class Main14Activity extends AppCompatActivity {
             @Override public void onClick(View view){
                 Intent start = new Intent(getApplicationContext(), Main20Activity.class);
                 startActivity(start);
+                int counterTri3 = preferences.getInt("counterTri3", 0);
+                counterTri3 = counterTri3 + 1;
+                edit.putInt("counterTri3", counterTri3).commit();
             }
         });
 
@@ -50,6 +64,9 @@ public class Main14Activity extends AppCompatActivity {
             @Override public void onClick(View view){
                 Intent start = new Intent(getApplicationContext(), Main20Activity.class);
                 startActivity(start);
+                int counterTri4 = preferences.getInt("counterTri4", 0);
+                counterTri4 = counterTri4 + 1;
+                edit.putInt("counterTri4", counterTri4).commit();
             }
         });
 

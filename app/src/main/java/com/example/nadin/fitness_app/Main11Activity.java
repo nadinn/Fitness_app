@@ -1,6 +1,8 @@
 package com.example.nadin.fitness_app;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -13,6 +15,10 @@ public class Main11Activity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main11);
+
+        final SharedPreferences preferences = getApplicationContext().getSharedPreferences("counterStatistics2", Context.MODE_PRIVATE);
+        final SharedPreferences.Editor edit = preferences.edit();
+
 
         // creating new buttons
         ImageButton che1 = (ImageButton) findViewById(R.id.imageButton20);
@@ -30,6 +36,9 @@ public class Main11Activity extends AppCompatActivity {
             @Override public void onClick(View view){
                 Intent start = new Intent(getApplicationContext(), Main20Activity.class);
                 startActivity(start);
+                int counterChest1 = preferences.getInt("counterChest1", 0);
+                counterChest1 = counterChest1 + 1;
+                edit.putInt("counterChest1", counterChest1).commit();
             }
         });
 
@@ -37,6 +46,9 @@ public class Main11Activity extends AppCompatActivity {
             @Override public void onClick(View view){
                 Intent start = new Intent(getApplicationContext(), Main20Activity.class);
                 startActivity(start);
+                int counterChest2 = preferences.getInt("counterChest2", 0);
+                counterChest2 = counterChest2 + 1;
+                edit.putInt("counterChest2", counterChest2).commit();
             }
         });
 
@@ -44,6 +56,9 @@ public class Main11Activity extends AppCompatActivity {
             @Override public void onClick(View view){
                 Intent start = new Intent(getApplicationContext(), Main20Activity.class);
                 startActivity(start);
+                int counterChest3 = preferences.getInt("counterChest3", 0);
+                counterChest3 = counterChest3 + 1;
+                edit.putInt("counterChest3", counterChest3).commit();
             }
         });
 
@@ -51,6 +66,9 @@ public class Main11Activity extends AppCompatActivity {
             @Override public void onClick(View view){
                 Intent start = new Intent(getApplicationContext(), Main20Activity.class);
                 startActivity(start);
+                int counterChest4 = preferences.getInt("counterChest4", 0);
+                counterChest4 = counterChest4 + 1;
+                edit.putInt("counterChest4", counterChest4).commit();
             }
         });
 

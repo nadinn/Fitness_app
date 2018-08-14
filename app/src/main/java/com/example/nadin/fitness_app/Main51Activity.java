@@ -34,13 +34,20 @@ public class Main51Activity extends AppCompatActivity {
 
         // retrieving the data from sharesPreferences and assigning variables
         final SharedPreferences preferences = getApplicationContext().getSharedPreferences("counterStatistics2", Context.MODE_PRIVATE);
-        int abs = preferences.getInt("counterAbs", 0);
-        int back = preferences.getInt("counterBack", 0);
-        int biceps = preferences.getInt("counterBi", 0);
-        int chest = preferences.getInt("counterChest", 0);
-        int glutes = preferences.getInt("counterGlutes", 0);
-        int quads = preferences.getInt("counterQuads", 0);
-        int triceps = preferences.getInt("counterTri", 0);
+        int abs = preferences.getInt("counterAbs1", 0)+preferences.getInt("counterAbs2", 0)+
+                preferences.getInt("counterAbs3", 0)+preferences.getInt("counterAbs4", 0);
+        int back = preferences.getInt("counterBack1", 0) + preferences.getInt("counterBack2", 0)+
+                preferences.getInt("counterBack3", 0)+preferences.getInt("counterBack4", 0);
+        int biceps = preferences.getInt("counterBi1", 0) + preferences.getInt("counterBi2", 0) +
+                preferences.getInt("counterBi3", 0) +preferences.getInt("counterBi4", 0);
+        int chest = preferences.getInt("counterChest1", 0)+preferences.getInt("counterChest2", 0)+
+                preferences.getInt("counterChest3", 0)+preferences.getInt("counterChest4", 0);
+        int glutes = preferences.getInt("counterGlutes1", 0) + preferences.getInt("counterGlutes2", 0)+
+                preferences.getInt("counterGlutes3", 0)+preferences.getInt("counterGlutes4", 0);
+        int quads = preferences.getInt("counterQuads1", 0)+preferences.getInt("counterQuads2", 0)+
+                preferences.getInt("counterQuads3", 0)+preferences.getInt("counterQuads4", 0);
+        int triceps = preferences.getInt("counterTri1", 0)+preferences.getInt("counterTri2", 0)+
+                preferences.getInt("counterTri3", 0)+preferences.getInt("counterTri4", 0);
 
         //creating an array with the data retrieved
 
@@ -123,7 +130,7 @@ public class Main51Activity extends AppCompatActivity {
 
 
 /**
- sources: https://github.com/PhilJay/MPAndroidChart
+ adapted from: https://github.com/PhilJay/MPAndroidChart
           https://github.com/mitchtabian/Pie-Chart-Tutorial
 
  */

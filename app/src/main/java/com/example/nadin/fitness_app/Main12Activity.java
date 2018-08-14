@@ -1,6 +1,8 @@
 package com.example.nadin.fitness_app;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -13,6 +15,9 @@ public class Main12Activity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main12);
+
+        final SharedPreferences preferences = getApplicationContext().getSharedPreferences("counterStatistics2", Context.MODE_PRIVATE);
+        final SharedPreferences.Editor edit = preferences.edit();
 
         // creating new buttons
         ImageButton glu1 = (ImageButton) findViewById(R.id.imageButton24);
@@ -29,6 +34,9 @@ public class Main12Activity extends AppCompatActivity {
             @Override public void onClick(View view){
                 Intent start = new Intent(getApplicationContext(), Main20Activity.class);
                 startActivity(start);
+                int counterGlutes1 = preferences.getInt("counterGlutes1", 0);
+                counterGlutes1 = counterGlutes1 + 1;
+                edit.putInt("counterGlutes1", counterGlutes1).commit();
             }
         });
 
@@ -36,6 +44,9 @@ public class Main12Activity extends AppCompatActivity {
             @Override public void onClick(View view){
                 Intent start = new Intent(getApplicationContext(), Main20Activity.class);
                 startActivity(start);
+                int counterGlutes2 = preferences.getInt("counterGlutes2", 0);
+                counterGlutes2 = counterGlutes2 + 1;
+                edit.putInt("counterGlutes2", counterGlutes2).commit();
             }
         });
 
@@ -43,6 +54,9 @@ public class Main12Activity extends AppCompatActivity {
             @Override public void onClick(View view){
                 Intent start = new Intent(getApplicationContext(), Main20Activity.class);
                 startActivity(start);
+                int counterGlutes3 = preferences.getInt("counterGlutes3", 0);
+                counterGlutes3 = counterGlutes3 + 1;
+                edit.putInt("counterGlutes3", counterGlutes3).commit();
             }
         });
 
@@ -50,6 +64,9 @@ public class Main12Activity extends AppCompatActivity {
             @Override public void onClick(View view){
                 Intent start = new Intent(getApplicationContext(), Main20Activity.class);
                 startActivity(start);
+                int counterGlutes4 = preferences.getInt("counterGlutes4", 0);
+                counterGlutes4 = counterGlutes4 + 1;
+                edit.putInt("counterGlutes4", counterGlutes4).commit();
             }
         });
 

@@ -1,3 +1,5 @@
+
+
 package com.example.nadin.fitness_app;
 
 import android.content.DialogInterface;
@@ -17,11 +19,11 @@ import com.jjoe64.graphview.series.DataPoint;
 import com.jjoe64.graphview.series.LineGraphSeries;
 
 public class Main19Activity extends AppCompatActivity {
+
     Button input, viewData, modify;
-    EditText inp1, inp2;
+    EditText inp1, inp2, inp3;
     GraphView graph;
     LineGraphSeries<DataPoint> series;
-    //LineGraphSeries<DataPoint> series = new LineGraphSeries<>(new DataPoint[0]);
 
     MyHelper myHelper;
     SQLiteDatabase sqLiteDatabase;
@@ -34,6 +36,7 @@ public class Main19Activity extends AppCompatActivity {
         input= (Button) findViewById(R.id.button10);
         inp1 = (EditText) findViewById(R.id.inp1);
         inp2 = (EditText)findViewById(R.id.inp2);
+        inp3 = (EditText)findViewById(R.id.inp3);
         myHelper = new MyHelper(this);
         sqLiteDatabase = myHelper.getWritableDatabase();
         graph = (GraphView)findViewById(R.id.graph2);
@@ -61,9 +64,11 @@ public class Main19Activity extends AppCompatActivity {
 
 
 
-    }/**
+    }
+    /**
      * method for adding data to the database from the two EditText
-     */
+      */
+
 
 
      public void inputMethod() {
@@ -72,7 +77,8 @@ public class Main19Activity extends AppCompatActivity {
             public void onClick(View view) {
                 int xVal = Integer.parseInt(String.valueOf(inp1.getText()));
                 int yVal = Integer.parseInt(String.valueOf(inp2.getText()));
-               boolean insertData = myHelper.insertData(xVal, yVal);
+                String zVal= String.valueOf(inp3.getText());
+               boolean insertData = myHelper.insertData(xVal, yVal, zVal);
                 if (insertData == true){
                     Toast.makeText(Main19Activity.this, "Data added ", Toast.LENGTH_LONG).show();
                 } else{
@@ -91,7 +97,8 @@ public class Main19Activity extends AppCompatActivity {
     /**
      * method used to retrieve data for the graph
      * @return
-     */
+     * */
+
 
     private DataPoint[] getData(){
         String[] columns = {"xValues","yValues"};
@@ -108,7 +115,8 @@ public class Main19Activity extends AppCompatActivity {
 
     /**
      * method for seeing the data inserted within the database
-     */
+     * */
+
     public void viewData() {
         viewData.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -123,9 +131,12 @@ public class Main19Activity extends AppCompatActivity {
                 StringBuffer buffer = new StringBuffer();
                 while (data.moveToNext()) {
 
-                    buffer.append("Entry:" + data.getString(0) + "\n");
-                    buffer.append("Date: " + Integer.parseInt(data.getString(1)) + "\n");
+                    //buffer.append("ID:" + data.getString(0) + "\n");
+                    buffer.append("Entry #: " + Integer.parseInt(data.getString(1)) + "\n");
+                    buffer.append("Date: " + data.getString(3) + "\n");
                     buffer.append("Weight: " + Integer.parseInt(data.getString(2)) + "\n");
+                    buffer.append("\n");
+
 
 
 
@@ -158,3 +169,4 @@ public class Main19Activity extends AppCompatActivity {
 
 
 }
+

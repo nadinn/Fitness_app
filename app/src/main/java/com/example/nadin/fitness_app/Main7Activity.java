@@ -18,10 +18,6 @@ public class Main7Activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main7);
 
-        final SharedPreferences preferences = getApplicationContext().getSharedPreferences("counterStatistics2", Context.MODE_PRIVATE);
-        final SharedPreferences.Editor edit = preferences.edit();
-
-
         /**
         * creating buttonAbs and finding it by id from xml
         */
@@ -36,12 +32,6 @@ public class Main7Activity extends AppCompatActivity {
             public void onClick(View view){
                 Intent start = new Intent(getApplicationContext(), Main8Activity.class);
                 startActivity(start);
-
-                int counterAbs = preferences.getInt("counterAbs", 0);
-                counterAbs = counterAbs + 1;
-                edit.putInt("counterAbs", counterAbs).commit();
-
-
                 }
 
 
@@ -61,11 +51,6 @@ public class Main7Activity extends AppCompatActivity {
             public void onClick(View view){
                 Intent start = new Intent(getApplicationContext(), Main9Activity.class);
                 startActivity(start);
-
-                int counterBack = preferences.getInt("counterBack", 0);
-                counterBack = counterBack + 1;
-                edit.putInt("counterBack", counterBack).commit();
-
             }
 
 
@@ -85,11 +70,6 @@ public class Main7Activity extends AppCompatActivity {
             public void onClick(View view){
                 Intent start = new Intent(getApplicationContext(), Main10Activity.class);
                 startActivity(start);
-
-                int counterBi = preferences.getInt("counterBi", 0);
-                counterBi = counterBi + 1;
-                edit.putInt("counterBi", counterBi).commit();
-
             }
 
 
@@ -109,11 +89,6 @@ public class Main7Activity extends AppCompatActivity {
             public void onClick(View view){
                 Intent start = new Intent(getApplicationContext(), Main11Activity.class);
                 startActivity(start);
-
-                int counterChest = preferences.getInt("counterChest", 0);
-                counterChest = counterChest + 1;
-                edit.putInt("counterChest", counterChest).commit();
-
             }
 
 
@@ -132,11 +107,6 @@ public class Main7Activity extends AppCompatActivity {
             public void onClick(View view){
                 Intent start = new Intent(getApplicationContext(), Main12Activity.class);
                 startActivity(start);
-
-                int counterGlutes = preferences.getInt("counterGlutes", 0);
-                counterGlutes = counterGlutes + 1;
-                edit.putInt("counterGlutes", counterGlutes).commit();
-
             }
 
 
@@ -156,11 +126,6 @@ public class Main7Activity extends AppCompatActivity {
             public void onClick(View view){
                 Intent start = new Intent(getApplicationContext(), Main13Activity.class);
                 startActivity(start);
-
-                int counterQuads = preferences.getInt("counterQuads", 0);
-                counterQuads = counterQuads + 1;
-                edit.putInt("counterQuads", counterQuads).commit();
-
             }
 
 
@@ -179,10 +144,6 @@ public class Main7Activity extends AppCompatActivity {
             public void onClick(View view){
                 Intent start = new Intent(getApplicationContext(), Main14Activity.class);
                 startActivity(start);
-
-                int counterTri = preferences.getInt("counterTri", 0);
-                counterTri = counterTri + 1;
-                edit.putInt("counterTri", counterTri).commit();
 
             }
 
