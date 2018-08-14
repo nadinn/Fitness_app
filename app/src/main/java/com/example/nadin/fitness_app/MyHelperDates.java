@@ -1,3 +1,5 @@
+/**
+ * ATTEMPT AT A DATABASE WITH DATES
 package com.example.nadin.fitness_app;
 
 import android.content.ContentValues;
@@ -74,5 +76,6 @@ public class MyHelperDates extends SQLiteOpenHelper {
     }
 
 }
+ **/
 
 

@@ -1,3 +1,7 @@
+/**
+ * PIE-CHART ACTIVITY
+ */
+
 package com.example.nadin.fitness_app;
 
 import android.content.Context;
@@ -131,6 +135,8 @@ public class Main51Activity extends AppCompatActivity {
 
 /**
  adapted from: https://github.com/PhilJay/MPAndroidChart
-          https://github.com/mitchtabian/Pie-Chart-Tutorial
-
+               https://github.com/mitchtabian/Pie-Chart-Tutorial
+               https://stackoverflow.com/questions/12779605/sharedpreferences-and-emulator
+ *             https://developer.android.com/training/data-storage/shared-preferences
  */
+

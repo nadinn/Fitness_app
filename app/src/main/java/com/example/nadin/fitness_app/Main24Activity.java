@@ -1,3 +1,6 @@
+/**
+ * ABS EXERCISE 4 - DATABASE POPULATION + GRAPH
+ */
 package com.example.nadin.fitness_app;
 
 import android.content.DialogInterface;

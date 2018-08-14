@@ -1,3 +1,7 @@
+/**
+ * DATABASE HELPER FOR QUADS DB
+ */
+
 package com.example.nadin.fitness_app;
 
 import android.content.ContentValues;

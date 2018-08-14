@@ -1,3 +1,6 @@
+/**
+ * QUADS EXERCISE ACTIVITY
+ */
 package com.example.nadin.fitness_app;
 
 import android.content.Context;

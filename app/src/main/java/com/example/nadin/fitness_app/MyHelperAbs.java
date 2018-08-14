@@ -1,3 +1,6 @@
+/**
+ * DATABASE HELPER FOR ABS DB
+ */
 package com.example.nadin.fitness_app;
 
 import android.content.ContentValues;

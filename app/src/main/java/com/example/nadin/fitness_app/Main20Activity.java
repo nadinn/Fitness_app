@@ -1,3 +1,7 @@
+/**
+ * COUNTDOWN ACTIVITY FOR EXERCISES
+ */
+
 package com.example.nadin.fitness_app;
 
 import android.content.Intent;

@@ -1,3 +1,6 @@
+/**
+ * BICEPS EXERCISE 3 - DATABASE POPULATION + GRAPH
+ */
 package com.example.nadin.fitness_app;
 
 

@@ -1,3 +1,6 @@
+/**
+ * DATABASE HELPER FOR BACK DB
+ */
 package com.example.nadin.fitness_app;
 
 import android.content.ContentValues;

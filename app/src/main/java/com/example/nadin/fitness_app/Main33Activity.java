@@ -1,3 +1,6 @@
+/**
+ * CHEST EXERCISE 1 - DATABASE POPULATION + GRAPH
+ */
 package com.example.nadin.fitness_app;
 
 

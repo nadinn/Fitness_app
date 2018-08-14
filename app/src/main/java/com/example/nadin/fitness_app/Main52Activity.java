@@ -1,4 +1,8 @@
-/**package com.example.nadin.fitness_app;
+/**
+ *
+ TESTING DATE STORAGE AND GRAPH POPULATION
+
+package com.example.nadin.fitness_app;
 
 import android.content.DialogInterface;
 import android.content.Intent;

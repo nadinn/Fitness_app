@@ -1,4 +1,6 @@
-
+/**
+ * ACTIVITY TO MODIFY THE DATABASE THAT POPULATES THE GRAPH, LINKED TO ACTIVITY 19
+ */
 package com.example.nadin.fitness_app;
 
 import android.content.DialogInterface;

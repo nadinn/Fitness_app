@@ -1,4 +1,6 @@
-
+/**
+ * ACTIVITY THAT TAKES IN DATA(ENTRY, WEIGHT, DATE ) INPUTS AND DISPLAYS THEM ON THE GRAPH
+ */
 
 package com.example.nadin.fitness_app;
 
@@ -15,8 +17,11 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.jjoe64.graphview.GraphView;
+import com.jjoe64.graphview.helper.StaticLabelsFormatter;
 import com.jjoe64.graphview.series.DataPoint;
 import com.jjoe64.graphview.series.LineGraphSeries;
+
+import java.lang.reflect.Array;
 
 public class Main19Activity extends AppCompatActivity {
 
@@ -48,6 +53,11 @@ public class Main19Activity extends AppCompatActivity {
         series = new LineGraphSeries<>(getData());
 
         graph.addSeries(series);
+
+        //StaticLabelsFormatter staticLabelsFormatter = new StaticLabelsFormatter(graph);
+        //staticLabelsFormatter.setHorizontalLabels(new String[] {"old", "middle", "new"});
+       // staticLabelsFormatter.setVerticalLabels(new String[] {"low", "middle", "high"});
+        //graph.getGridLabelRenderer().setLabelFormatter(staticLabelsFormatter);
 
 
 
@@ -102,7 +112,7 @@ public class Main19Activity extends AppCompatActivity {
 
     private DataPoint[] getData(){
         String[] columns = {"xValues","yValues"};
-        Cursor cursor = sqLiteDatabase.query("MyTable", columns, null, null, null, null, null);
+        Cursor cursor = sqLiteDatabase.query("MyTable", columns, null, null, null, null, "xValues");
         DataPoint[] dp = new DataPoint[cursor.getCount()];
 
         for(int i=0; i<cursor.getCount(); i++){
@@ -112,6 +122,34 @@ public class Main19Activity extends AppCompatActivity {
         }
         return dp;
     }
+/*
+    private DataPoint[] getDataX(){
+        String[] columns = {"zValues"};
+        Cursor cursor = sqLiteDatabase.query("MyTable", columns, null, null, null, null, null);
+        DataPoint[] dp1 = new DataPoint[cursor.getCount()];
+
+        for(int i=0; i<cursor.getCount(); i++){
+            cursor.moveToNext();
+            dp1[i]= new DataPoint(cursor.getInt(0), cursor.getInt(1));
+
+        }
+        return dp1;
+    }
+
+    private String[] getXLabels(){
+        String[] columns ={"zValues"};
+        Cursor cursor=sqLiteDatabase.query("MyTable", columns, null, null, null, null, null);
+        String[] xLabels= new String[cursor.getCount()];
+
+        for(int i=0; i<cursor.getCount(); i++){
+            cursor.moveToNext();
+            String a = cursor.getString(3);
+            xLabels[i]= a;
+
+        }
+        return xLabels;
+    }
+    */
 
     /**
      * method for seeing the data inserted within the database

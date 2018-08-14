@@ -1,4 +1,6 @@
-
+/**
+ * FIRST ACTIVITY OF THE APP
+ */
 package com.example.nadin.fitness_app;
 
 import android.content.Intent;

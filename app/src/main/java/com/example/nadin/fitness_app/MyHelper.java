@@ -1,3 +1,6 @@
+/**
+ * DATABASE HELPER FOR WEIGHT GRAPH - ACTIVITY 17 + 19
+ **/
 package com.example.nadin.fitness_app;
 
 import android.content.ContentValues;
