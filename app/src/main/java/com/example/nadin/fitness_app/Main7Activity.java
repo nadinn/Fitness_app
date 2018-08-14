@@ -2,6 +2,7 @@
  * ACTIVITY WITH THE MAIN SEVEN EXERCISE GROUPS BUTTON
  */
 
+
 package com.example.nadin.fitness_app;
 
 import android.app.Activity;
