@@ -164,3 +164,16 @@ public class MyHelperChest extends SQLiteOpenHelper {
     }
 
 }
+
+/**
+
+ Adapted from: mitchtabian/SQLiteSaveUserData [Internet]. GitHub. 2018 [cited 02 July 2018].
+ Available from: https://github.com/mitchtabian/SQLiteSaveUserData https://stackoverflow.com/questions/34939161/how-implement-my-sqlite-data-in-a-graphview
+
+ Save data using SQLite |  Android Developers [Internet]. Android Developers. 2018 [cited 03 July 2018].
+ Available from: https://developer.android.com/training/data-storage/sqlite
+
+ Android SQLite Database [Internet]. www.tutorialspoint.com. 2018 [cited 05 July 2018].
+ Available from: https://www.tutorialspoint.com/android/android_sqlite_database.htm
+
+ */

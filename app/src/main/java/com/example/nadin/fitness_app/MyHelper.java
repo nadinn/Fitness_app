@@ -10,7 +10,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 public class MyHelper extends SQLiteOpenHelper {
-    private static final String DB_NAME = "MyDatabaseZ1";
+    private static final String DB_NAME = "MyDatabaseF";
     private static final String IDVALUES = "ID";
     private static final String XVALUES = "xValues";
     private static final String YVALUES = "yValues";
@@ -30,7 +30,7 @@ public class MyHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
 
-        String createTable = "CREATE TABLE " + TABLE_NAME + "(" + IDVALUES + " INTEGER PRIMARY KEY AUTOINCREMENT, " + XVALUES + " INTEGER, " + YVALUES + " INTEGER, " + ZVALUES + " STRING ); ";
+        String createTable = "CREATE TABLE " + TABLE_NAME + "(" + IDVALUES + " INTEGER PRIMARY KEY AUTOINCREMENT, " + XVALUES + " DOUBLE, " + YVALUES + " DOUBLE, " + ZVALUES + " STRING ); ";
         db.execSQL(createTable);
 
     }
@@ -42,10 +42,9 @@ public class MyHelper extends SQLiteOpenHelper {
 
     }
 
-    public boolean insertData(int x, int y, String z) {
+    public boolean insertData(double x, double y, String z) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
-
         values.put(XVALUES, x);
         values.put(YVALUES, y);
         values.put(ZVALUES, z);
@@ -63,18 +62,40 @@ public class MyHelper extends SQLiteOpenHelper {
         return data;
     }
 
-    public boolean updateData(String id, int x, int y, String z){
+    public boolean updateDataX(String id, double x){
         mySqLiteDatabase=this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put(IDVALUES, id);
         contentValues.put(XVALUES, x);
+
+        mySqLiteDatabase.update(TABLE_NAME, contentValues, "ID = ?", new String[] {id});
+
+        return true;
+    }
+    public boolean updateDataY(String id, double y){
+        mySqLiteDatabase=this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(IDVALUES, id);
         contentValues.put(YVALUES, y);
+
+        mySqLiteDatabase.update(TABLE_NAME, contentValues, "ID = ?", new String[] {id});
+
+        return true;
+    }
+
+    public boolean updateDataZ(String id, String z){
+        mySqLiteDatabase=this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(IDVALUES, id);
         contentValues.put(ZVALUES, z);
 
         mySqLiteDatabase.update(TABLE_NAME, contentValues, "ID = ?", new String[] {id});
 
         return true;
     }
+
+
+
 
     public Integer deleteData(String id){
         mySqLiteDatabase=this.getWritableDatabase();
@@ -83,3 +104,15 @@ public class MyHelper extends SQLiteOpenHelper {
 
 }
 
+/**
+
+ Adapted from: mitchtabian/SQLiteSaveUserData [Internet]. GitHub. 2018 [cited 02 July 2018].
+ Available from: https://github.com/mitchtabian/SQLiteSaveUserData https://stackoverflow.com/questions/34939161/how-implement-my-sqlite-data-in-a-graphview
+
+ Save data using SQLite |  Android Developers [Internet]. Android Developers. 2018 [cited 03 July 2018].
+ Available from: https://developer.android.com/training/data-storage/sqlite
+
+ Android SQLite Database [Internet]. www.tutorialspoint.com. 2018 [cited 05 July 2018].
+ Available from: https://www.tutorialspoint.com/android/android_sqlite_database.htm
+
+ */

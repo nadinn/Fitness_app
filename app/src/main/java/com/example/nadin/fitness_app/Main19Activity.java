@@ -14,6 +14,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.jjoe64.graphview.GraphView;
@@ -26,6 +27,7 @@ import java.lang.reflect.Array;
 public class Main19Activity extends AppCompatActivity {
 
     Button input, viewData, modify;
+    ImageButton home;
     EditText inp1, inp2, inp3;
     GraphView graph;
     LineGraphSeries<DataPoint> series;
@@ -46,12 +48,23 @@ public class Main19Activity extends AppCompatActivity {
         sqLiteDatabase = myHelper.getWritableDatabase();
         graph = (GraphView)findViewById(R.id.graph2);
         modify= (Button) findViewById(R.id.button12);
+
+        home=(ImageButton)findViewById(R.id.homeButton) ;
+        home.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent start;
+                start = new Intent(getApplicationContext(), MainActivity.class);
+                startActivity(start);
+
+            }
+        });
+
         
         inputMethod();
         viewData();
 
         series = new LineGraphSeries<>(getData());
-
         graph.addSeries(series);
 
         //StaticLabelsFormatter staticLabelsFormatter = new StaticLabelsFormatter(graph);
@@ -85,8 +98,8 @@ public class Main19Activity extends AppCompatActivity {
         input.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                int xVal = Integer.parseInt(String.valueOf(inp1.getText()));
-                int yVal = Integer.parseInt(String.valueOf(inp2.getText()));
+                double xVal =Double.parseDouble(String.valueOf(inp1.getText()));
+                double yVal = Double.parseDouble(String.valueOf(inp2.getText()));
                 String zVal= String.valueOf(inp3.getText());
                boolean insertData = myHelper.insertData(xVal, yVal, zVal);
                 if (insertData == true){
@@ -95,9 +108,9 @@ public class Main19Activity extends AppCompatActivity {
                     Toast.makeText(Main19Activity.this, "Data not added ", Toast.LENGTH_LONG).show();
 
                 }
-                //series= new LineGraphSeries<DataPoint>(getData());
+
                 series.resetData(getData());
-                //graph.addSeries(series);
+
             }
 
         });
@@ -122,34 +135,7 @@ public class Main19Activity extends AppCompatActivity {
         }
         return dp;
     }
-/*
-    private DataPoint[] getDataX(){
-        String[] columns = {"zValues"};
-        Cursor cursor = sqLiteDatabase.query("MyTable", columns, null, null, null, null, null);
-        DataPoint[] dp1 = new DataPoint[cursor.getCount()];
 
-        for(int i=0; i<cursor.getCount(); i++){
-            cursor.moveToNext();
-            dp1[i]= new DataPoint(cursor.getInt(0), cursor.getInt(1));
-
-        }
-        return dp1;
-    }
-
-    private String[] getXLabels(){
-        String[] columns ={"zValues"};
-        Cursor cursor=sqLiteDatabase.query("MyTable", columns, null, null, null, null, null);
-        String[] xLabels= new String[cursor.getCount()];
-
-        for(int i=0; i<cursor.getCount(); i++){
-            cursor.moveToNext();
-            String a = cursor.getString(3);
-            xLabels[i]= a;
-
-        }
-        return xLabels;
-    }
-    */
 
     /**
      * method for seeing the data inserted within the database
@@ -168,23 +154,13 @@ public class Main19Activity extends AppCompatActivity {
                 // buffer used to view contents in the database
                 StringBuffer buffer = new StringBuffer();
                 while (data.moveToNext()) {
-
-                    //buffer.append("ID:" + data.getString(0) + "\n");
-                    buffer.append("Entry #: " + Integer.parseInt(data.getString(1)) + "\n");
+                    buffer.append("Entry #: " + Double.parseDouble(data.getString(1)) + "\n");
                     buffer.append("Date: " + data.getString(3) + "\n");
-                    buffer.append("Weight: " + Integer.parseInt(data.getString(2)) + "\n");
+                    buffer.append("Weight: " + Double.parseDouble(data.getString(2)) + "\n");
                     buffer.append("\n");
-
-
-
-
                 }
                 // displaying the message when the data can be retrieved correctly
                 display("All data", buffer.toString());
-
-
-
-
             }
         });
     }
@@ -207,4 +183,15 @@ public class Main19Activity extends AppCompatActivity {
 
 
 }
+/**
 
+ Adapted from: mitchtabian/SQLiteSaveUserData [Internet]. GitHub. 2018 [cited 02 July 2018].
+ Available from: https://github.com/mitchtabian/SQLiteSaveUserData https://stackoverflow.com/questions/34939161/how-implement-my-sqlite-data-in-a-graphview
+
+ Save data using SQLite |  Android Developers [Internet]. Android Developers. 2018 [cited 03 July 2018].
+ Available from: https://developer.android.com/training/data-storage/sqlite
+
+ Android SQLite Database [Internet]. www.tutorialspoint.com. 2018 [cited 05 July 2018].
+ Available from: https://www.tutorialspoint.com/android/android_sqlite_database.htm
+
+*/

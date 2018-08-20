@@ -74,5 +74,10 @@ public class Main20Activity extends AppCompatActivity {
 }
 
 /**
- * source:https://developer.android.com/reference/android/os/CountDownTimer
+ Adapted from : CountDownTimer  |  Android Developers [Internet]. Android Developers. 2018 [cited 03 August 2018].
+                Available from: https://developer.android.com/reference/android/os/CountDownTimer
+                Android? H. How to make a countdown timer in Android? [Internet]. Stack Overflow. 2018 [cited 07 August 2018].
+                Available from: https://stackoverflow.com/questions/10032003/how-to-make-a-countdown-timer-in-android
+                CountDownTimer? H. How to stop the CountDownTimer? [Internet]. Stack Overflow. 2018 [cited 07 August 2018].
+                Available from: https://stackoverflow.com/questions/43834881/how-to-stop-the-countdowntimer
  */

@@ -178,3 +178,28 @@ public class Main48Activity extends AppCompatActivity {
     }
 
 }
+/**
+
+ Adapted from:
+ mitchtabian/SQLiteSaveUserData [Internet]. GitHub. 2018 [cited 02 July 2018].
+ Available from: https://github.com/mitchtabian/SQLiteSaveUserData https://stackoverflow.com/questions/34939161/how-implement-my-sqlite-data-in-a-graphview
+
+ Save data using SQLite |  Android Developers [Internet]. Android Developers. 2018 [cited 03 July 2018].
+ Available from: https://developer.android.com/training/data-storage/sqlite
+
+ Android SQLite Database [Internet]. www.tutorialspoint.com. 2018 [cited 05 July 2018].
+ Available from: https://www.tutorialspoint.com/android/android_sqlite_database.htm
+
+ Simple graph [Internet]. Android-graphview.org. 2018 [cited 08 July 2018].
+ Available from: http://www.android-graphview.org/simple-graph/
+
+ jjoe64/GraphView [Internet]. GitHub. 2018 [cited 13 July 2018].
+ Available from: https://github.com/jjoe64/GraphView
+
+ AlertDialog.Builder  |  Android Developers [Internet]. Android Developers. 2018   [cited 28 July 2018].
+ Available from:   https://developer.android.com/reference/android/app/AlertDialog.Builder
+
+ Android Alert Dialog with one a. Android Alert Dialog with one, two, and three buttons [Internet]. Stack Overflow. 2018 [cited 28 July 2018].
+ Available from: https://stackoverflow.com/questions/43513919/android-alert-dialog-with-one-two-and-three-buttons
+
+ */

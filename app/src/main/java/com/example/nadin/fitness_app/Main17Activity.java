@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 
@@ -21,7 +22,8 @@ public class Main17Activity extends AppCompatActivity {
 
 
     Button seeValue;
-    Button updateValue;
+    ImageButton home ;
+    Button updateValueX, updateValueY, updateValueZ;
     Button delete;
     EditText xValue, yValue, zValue, idValue;
 
@@ -51,13 +53,18 @@ public class Main17Activity extends AppCompatActivity {
         zValue = (EditText) findViewById(R.id.editTextZ);
 
         seeValue = (Button) findViewById(R.id.button6);
-        updateValue = (Button) findViewById(R.id.button7);
+        updateValueX = (Button) findViewById(R.id.updateX);
+        updateValueY = (Button) findViewById(R.id.updateY);
+        updateValueZ = (Button) findViewById(R.id.updateZ);
+
         idValue = (EditText) findViewById(R.id.editText4);
         delete = (Button) findViewById(R.id.button4);
 
         //addData();
         viewData();
-        UpdateData();
+        UpdateDataX();
+        UpdateDataY();
+        UpdateDataZ();
         DeleteData();
 
 
@@ -72,6 +79,17 @@ public class Main17Activity extends AppCompatActivity {
 
             }
 
+        });
+
+        home=(ImageButton)findViewById(R.id.homeButton) ;
+        home.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent start;
+                start = new Intent(getApplicationContext(), MainActivity.class);
+                startActivity(start);
+
+            }
         });
 
     }
@@ -98,9 +116,9 @@ public class Main17Activity extends AppCompatActivity {
                 while (data.moveToNext()) {
 
                     buffer.append("ID:" + data.getString(0) + "\n");
-                    buffer.append("Entry #: " + Integer.parseInt(data.getString(1)) + "\n");
+                    buffer.append("Entry #: " + Double.parseDouble(data.getString(1)) + "\n");
                     buffer.append("Date: " + data.getString(3) + "\n");
-                    buffer.append("Weight: " + Integer.parseInt(data.getString(2)) + "\n");
+                    buffer.append("Weight: " + Double.parseDouble(data.getString(2)) + "\n");
                     buffer.append("\n");
                 }
                 // displaying the message when the data can be retrieved correctly
@@ -140,16 +158,15 @@ public class Main17Activity extends AppCompatActivity {
      * method for updating the database
      * */
 
-    public void UpdateData () {
-        updateValue.setOnClickListener(new View.OnClickListener() {
+    public void UpdateDataX () {
+        updateValueX.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 //checking if the id is actually entered for the update
                 int temp = idValue.getText().toString().length();
                 if (temp > 0) {
                     //updating the database by using the updateData() from DBHelper and passing in the values from the EditTexts
-                    boolean update = myHelper.updateData(idValue.getText().toString(), Integer.parseInt(xValue.getText().toString()),
-                            Integer.parseInt(yValue.getText().toString()), (zValue.getText().toString()));
+                    boolean update = myHelper.updateDataX(idValue.getText().toString(), Double.parseDouble(xValue.getText().toString()));
                     // message displaly if the data was correctly updated or not
                     if (update == true) {
                         Toast.makeText(Main17Activity.this, "Successfully updated database", Toast.LENGTH_LONG).show();
@@ -159,13 +176,58 @@ public class Main17Activity extends AppCompatActivity {
                     //error message if there is no text entered for the id EditText
                 } else {
                     Toast.makeText(Main17Activity.this, "Please enter ID to update", Toast.LENGTH_LONG).show();
-
                 }
-
             }
         });
-
     }
+    public void UpdateDataY () {
+        updateValueY.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //checking if the id is actually entered for the update
+                int temp = idValue.getText().toString().length();
+                if (temp > 0) {
+                    //updating the database by using the updateData() from DBHelper and passing in the values from the EditTexts
+                    boolean update = myHelper.updateDataY(idValue.getText().toString(), Double.parseDouble(yValue.getText().toString()));
+                    // message displaly if the data was correctly updated or not
+                    if (update == true) {
+                        Toast.makeText(Main17Activity.this, "Successfully updated database", Toast.LENGTH_LONG).show();
+                    } else {
+                        Toast.makeText(Main17Activity.this, "Something went wrong", Toast.LENGTH_LONG).show();
+                    }
+                    //error message if there is no text entered for the id EditText
+                } else {
+                    Toast.makeText(Main17Activity.this, "Please enter ID to update", Toast.LENGTH_LONG).show();
+                }
+            }
+        });
+    }
+
+    public void UpdateDataZ () {
+        updateValueZ.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //checking if the id is actually entered for the update
+                int temp = idValue.getText().toString().length();
+                if (temp > 0) {
+                    //updating the database by using the updateData() from DBHelper and passing in the values from the EditTexts
+                    boolean update = myHelper.updateDataZ(idValue.getText().toString(), zValue.getText().toString());
+                    // message displaly if the data was correctly updated or not
+                    if (update == true) {
+                        Toast.makeText(Main17Activity.this, "Successfully updated database", Toast.LENGTH_LONG).show();
+                    } else {
+                        Toast.makeText(Main17Activity.this, "Something went wrong", Toast.LENGTH_LONG).show();
+                    }
+                    //error message if there is no text entered for the id EditText
+                } else {
+                    Toast.makeText(Main17Activity.this, "Please enter ID to update", Toast.LENGTH_LONG).show();
+                }
+            }
+        });
+    }
+
+
+
 
 
     public void DeleteData() {
@@ -188,34 +250,27 @@ public class Main17Activity extends AppCompatActivity {
 }
 
 /**
- * method for adding data to the database from the two EditText
- public void addData(){
- addValue.setOnClickListener(new View.OnClickListener() {
-@Override public void onClick(View view) {
 
-String date = String.valueOf(edate.getText());
-String weight =String.valueOf(eweight.getText());
-//long date = new Date().getTime();
+Adapted from:
+ mitchtabian/SQLiteSaveUserData [Internet]. GitHub. 2018 [cited 02 July 2018].
+ Available from: https://github.com/mitchtabian/SQLiteSaveUserData https://stackoverflow.com/questions/34939161/how-implement-my-sqlite-data-in-a-graphview
 
-//calling the method insertWeight from DBHelper to insert data into the database
-boolean insertData = myHelper.insertData(date, weight);
+ Save data using SQLite |  Android Developers [Internet]. Android Developers. 2018 [cited 03 July 2018].
+ Available from: https://developer.android.com/training/data-storage/sqlite
 
-//message displayed if data has been added correctly
-if (insertData == true){
-Toast.makeText(Main17Activity.this, "Data added ", Toast.LENGTH_LONG).show();
-} else{
-Toast.makeText(Main17Activity.this, "Data not added ", Toast.LENGTH_LONG).show();
+ Android SQLite Database [Internet]. www.tutorialspoint.com. 2018 [cited 05 July 2018].
+ Available from: https://www.tutorialspoint.com/android/android_sqlite_database.htm
 
-}
+ Simple graph [Internet]. Android-graphview.org. 2018 [cited 08 July 2018].
+ Available from: http://www.android-graphview.org/simple-graph/
 
+ jjoe64/GraphView [Internet]. GitHub. 2018 [cited 13 July 2018].
+ Available from: https://github.com/jjoe64/GraphView
 
-}
-});
+ AlertDialog.Builder  |  Android Developers [Internet]. Android Developers. 2018   [cited 28 July 2018].
+ Available from:   https://developer.android.com/reference/android/app/AlertDialog.Builder
 
- }
+ Android Alert Dialog with one a. Android Alert Dialog with one, two, and three buttons [Internet]. Stack Overflow. 2018 [cited 28 July 2018].
+ Available from: https://stackoverflow.com/questions/43513919/android-alert-dialog-with-one-two-and-three-buttons
 
-
-
-/**
- source: https://github.com/mitchtabian/SQLiteSaveUserData
  */

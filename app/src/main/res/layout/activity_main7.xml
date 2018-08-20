@@ -9,6 +9,7 @@
 
     android:background="@drawable/backg3">
 
+
     <ImageButton
         android:id="@+id/imageButton"
         android:layout_width="80dp"
@@ -27,6 +28,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.251"
         app:srcCompat="@drawable/mainabs"
+
         android:alpha="0.60"/>
 
     <ImageButton

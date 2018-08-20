@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Main22Activity"
-    android:background="@drawable/backg2" >
+    android:background="@drawable/backg3" >
 
 
     <com.jjoe64.graphview.GraphView
@@ -30,7 +30,7 @@
         android:layout_marginRight="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
-        android:background="@android:color/darker_gray"
+        android:background="@drawable/shape"
         android:ems="10"
         android:hint="Entry number"
         android:inputType="textPersonName"
@@ -51,7 +51,7 @@
         android:layout_marginRight="8dp"
         android:layout_marginStart="24dp"
         android:layout_marginTop="8dp"
-        android:background="@android:color/darker_gray"
+        android:background="@drawable/shape"
         android:ems="10"
         android:hint="Number of reps"
         android:inputType="textPersonName"
@@ -78,7 +78,8 @@
         app:layout_constraintHorizontal_bias="0.954"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.076" />
+        app:layout_constraintVertical_bias="0.076"
+        android:background="@drawable/shapeb"/>
 
     <Button
         android:id="@+id/absView1"
@@ -96,7 +97,8 @@
         app:layout_constraintHorizontal_bias="0.862"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.774" />
+        app:layout_constraintVertical_bias="0.774"
+        android:background="@drawable/shapeb"/>
 
     <EditText
         android:id="@+id/id1"
@@ -105,7 +107,7 @@
         android:layout_marginBottom="136dp"
         android:layout_marginLeft="28dp"
         android:layout_marginStart="28dp"
-        android:background="@android:color/darker_gray"
+        android:background="@drawable/shape"
         android:ems="10"
         android:hint="ID"
         android:inputType="textPersonName"
@@ -122,7 +124,8 @@
         android:text="DELETE"
         android:textSize="12sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        android:background="@drawable/shapeb"/>
 
 
 </android.support.constraint.ConstraintLayout>

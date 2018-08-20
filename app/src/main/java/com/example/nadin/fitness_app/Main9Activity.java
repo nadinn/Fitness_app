@@ -109,3 +109,12 @@ public class Main9Activity extends AppCompatActivity {
 
     }
 }
+
+/**
+ Adapted from :
+ Emulator S. SharedPreferences and Emulator [Internet]. Stack Overflow. 2018 [cited 15 July 2018].
+ Available from: https://stackoverflow.com/questions/12779605/sharedpreferences-and-emulator
+
+ Save key-value data | Android Developers [Internet]. Android Developers. 2018 [cited 15 July 2018].
+ Available from: https://developer.android.com/training/data-storage/shared-preferences
+ */

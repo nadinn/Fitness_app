@@ -131,12 +131,22 @@ public class Main51Activity extends AppCompatActivity {
 }
 
 
-
-
 /**
- adapted from: https://github.com/PhilJay/MPAndroidChart
-               https://github.com/mitchtabian/Pie-Chart-Tutorial
-               https://stackoverflow.com/questions/12779605/sharedpreferences-and-emulator
- *             https://developer.android.com/training/data-storage/shared-preferences
- */
 
+    Adapted from :
+
+ Emulator S. SharedPreferences and Emulator [Internet]. Stack Overflow. 2018 [cited 15 July 2018].
+ Available from: https://stackoverflow.com/questions/12779605/sharedpreferences-and-emulator
+
+ Save key-value data | Android Developers [Internet]. Android Developers. 2018 [cited 15 July 2018].
+ Available from: https://developer.android.com/training/data-storage/shared-preferences
+
+ PhilJay/MPAndroidChart [Internet]. GitHub. 2018 [cited 03 August 2018].
+ Available from: https://github.com/PhilJay/MPAndroidChart
+
+ mitchtabian/Pie-Chart-Tutorial [Internet]. GitHub. 2018 [cited 09 August 2018].
+ Available from: https://github.com/mitchtabian/Pie-Chart-Tutorial
+
+
+
+ */
