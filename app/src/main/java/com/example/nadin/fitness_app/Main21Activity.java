@@ -20,7 +20,7 @@ import com.jjoe64.graphview.series.DataPoint;
 import com.jjoe64.graphview.series.LineGraphSeries;
 
 public class Main21Activity extends AppCompatActivity {
-    Button input, viewData, updateValue, delete;
+    Button input, viewData, delete;
     EditText inp1, inp2,idValue;
     GraphView graph;
     LineGraphSeries<DataPoint> series;
@@ -35,7 +35,6 @@ public class Main21Activity extends AppCompatActivity {
         setContentView(R.layout.activity_main21);
         viewData =(Button) findViewById(R.id.absView1);
         input= (Button) findViewById(R.id.absButton1);
-        updateValue = (Button) findViewById(R.id.absUpdate);
         delete = (Button) findViewById(R.id.absDelete);
         inp1 = (EditText) findViewById(R.id.absInput1);
         inp2 = (EditText)findViewById(R.id.absInput2);
@@ -47,7 +46,6 @@ public class Main21Activity extends AppCompatActivity {
 
         inputMethod();
         viewData();
-        updateData();
         deleteData();
 
 
@@ -68,8 +66,8 @@ public class Main21Activity extends AppCompatActivity {
         input.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                int xVal = Integer.parseInt(String.valueOf(inp1.getText()));
-                int yVal = Integer.parseInt(String.valueOf(inp2.getText()));
+                double xVal = Double.parseDouble(String.valueOf(inp1.getText()));
+                double yVal = Double.parseDouble(String.valueOf(inp2.getText()));
                 boolean insertData = myHelper.insertData1(xVal, yVal);
                 if (insertData == true){
                     Toast.makeText(Main21Activity.this, "Data added ", Toast.LENGTH_LONG).show();
@@ -77,13 +75,10 @@ public class Main21Activity extends AppCompatActivity {
                     Toast.makeText(Main21Activity.this, "Data not added ", Toast.LENGTH_LONG).show();
 
                 }
-                //series= new LineGraphSeries<DataPoint>(getData());
                 series.resetData(getData());
-                //graph.addSeries(series);
             }
 
         });
-
     }
 
     /**
@@ -98,7 +93,7 @@ public class Main21Activity extends AppCompatActivity {
 
         for(int i=0; i<cursor.getCount(); i++){
             cursor.moveToNext();
-            dp[i]= new DataPoint(cursor.getInt(0), cursor.getInt(1));
+            dp[i]= new DataPoint(cursor.getDouble(0), cursor.getDouble(1));
 
         }
         return dp;
@@ -122,8 +117,8 @@ public class Main21Activity extends AppCompatActivity {
                 while (data.moveToNext()) {
 
                     buffer.append("ID:" + data.getString(0) + "\n");
-                    buffer.append("Entry number: " + Integer.parseInt(data.getString(1)) + "\n");
-                    buffer.append("Repetitions number : " + Integer.parseInt(data.getString(2)) + "\n");
+                    buffer.append("Entry number: " + Double.parseDouble(data.getString(1)) + "\n");
+                    buffer.append("Repetitions number : " + Double.parseDouble(data.getString(2)) + "\n");
 
 
 
@@ -154,32 +149,7 @@ public class Main21Activity extends AppCompatActivity {
 
     }
 
-    public void updateData (){
-        updateValue.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                //checking if the id is actually entered for the update
-                int temp = idValue.getText().toString().length();
-                if (temp > 0 ){
-                    //updating the database by using the updateData() from DBHelper and passing in the values from the EditTexts
-                    boolean update = myHelper.updateData1(idValue.getText().toString(),Integer.parseInt(inp1.getText().toString()),
-                            Integer.parseInt(inp2.getText().toString()));
-                    // message displaly if the data was correctly updated or not
-                    if (update == true){
-                        Toast.makeText(Main21Activity.this, "Successfully updated database", Toast.LENGTH_LONG).show();
-                    }else{
-                        Toast.makeText(Main21Activity.this, "Something went wrong", Toast.LENGTH_LONG).show();
-                    }
-                    //error message if there is no text entered for the id EditText
-                }else{
-                    Toast.makeText(Main21Activity.this, "Please enter ID to update", Toast.LENGTH_LONG).show();
 
-                }
-
-            }
-        });
-
-    }
 
     public void deleteData(){
         delete.setOnClickListener(new View.OnClickListener() {

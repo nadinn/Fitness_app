@@ -23,7 +23,7 @@ import com.jjoe64.graphview.series.LineGraphSeries;
 
 public class Main27Activity extends AppCompatActivity {
 
-    Button input, viewData, updateValue, delete;
+    Button input, viewData, delete;
     EditText inp1, inp2,idValue;
     GraphView graph;
     LineGraphSeries<DataPoint> series;
@@ -38,7 +38,6 @@ public class Main27Activity extends AppCompatActivity {
 
         viewData =(Button) findViewById(R.id.absView1);
         input= (Button) findViewById(R.id.absButton1);
-        updateValue = (Button) findViewById(R.id.absUpdate);
         delete = (Button) findViewById(R.id.absDelete);
         inp1 = (EditText) findViewById(R.id.absInput1);
         inp2 = (EditText)findViewById(R.id.absInput2);
@@ -69,8 +68,8 @@ public class Main27Activity extends AppCompatActivity {
         input.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                int xVal = Integer.parseInt(String.valueOf(inp1.getText()));
-                int yVal = Integer.parseInt(String.valueOf(inp2.getText()));
+                double xVal = Double.parseDouble(String.valueOf(inp1.getText()));
+                double yVal = Double.parseDouble(String.valueOf(inp2.getText()));
                 boolean insertData = myHelper.insertData3(xVal, yVal);
                 if (insertData == true){
                     Toast.makeText(Main27Activity.this, "Data added ", Toast.LENGTH_LONG).show();
@@ -99,7 +98,7 @@ public class Main27Activity extends AppCompatActivity {
 
         for(int i=0; i<cursor.getCount(); i++){
             cursor.moveToNext();
-            dp[i]= new DataPoint(cursor.getInt(0), cursor.getInt(1));
+            dp[i]= new DataPoint(cursor.getDouble(0), cursor.getDouble(1));
 
         }
         return dp;
@@ -123,8 +122,8 @@ public class Main27Activity extends AppCompatActivity {
                 while (data.moveToNext()) {
 
                     buffer.append("ID:" + data.getString(0) + "\n");
-                    buffer.append("Entry number: " + Integer.parseInt(data.getString(1)) + "\n");
-                    buffer.append("Repetitions number : " + Integer.parseInt(data.getString(2)) + "\n");
+                    buffer.append("Entry number: " + Double.parseDouble(data.getString(1)) + "\n");
+                    buffer.append("Repetitions number : " + Double.parseDouble(data.getString(2)) + "\n");
 
 
 

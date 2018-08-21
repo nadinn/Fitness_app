@@ -22,10 +22,10 @@ public class MyHelperGlutes extends SQLiteOpenHelper {
     SQLiteDatabase mySqLiteDatabase;
     private Context con;
 
-    private static final String CREATE_TABLE_1 =  "CREATE TABLE " + TABLE_NAME1 + "(" + IDVALUES + " INTEGER PRIMARY KEY AUTOINCREMENT, " + XVALUES + " INTEGER, " + YVALUES + " INTEGER ); ";
-    private static final String CREATE_TABLE_2 =  "CREATE TABLE " + TABLE_NAME2 + "(" + IDVALUES + " INTEGER PRIMARY KEY AUTOINCREMENT, " + XVALUES + " INTEGER, " + YVALUES + " INTEGER ); ";
-    private static final String CREATE_TABLE_3 =  "CREATE TABLE " + TABLE_NAME3 + "(" + IDVALUES + " INTEGER PRIMARY KEY AUTOINCREMENT, " + XVALUES + " INTEGER, " + YVALUES + " INTEGER ); ";
-    private static final String CREATE_TABLE_4 =  "CREATE TABLE " + TABLE_NAME4 + "(" + IDVALUES + " INTEGER PRIMARY KEY AUTOINCREMENT, " + XVALUES + " INTEGER, " + YVALUES + " INTEGER ); ";
+    private static final String CREATE_TABLE_1 =  "CREATE TABLE " + TABLE_NAME1 + "(" + IDVALUES + " INTEGER PRIMARY KEY AUTOINCREMENT, " + XVALUES + " DOUBLE, " + YVALUES + " DOUBLE ); ";
+    private static final String CREATE_TABLE_2 =  "CREATE TABLE " + TABLE_NAME2 + "(" + IDVALUES + " INTEGER PRIMARY KEY AUTOINCREMENT, " + XVALUES + " DOUBLE, " + YVALUES + " DOUBLE ); ";
+    private static final String CREATE_TABLE_3 =  "CREATE TABLE " + TABLE_NAME3 + "(" + IDVALUES + " INTEGER PRIMARY KEY AUTOINCREMENT, " + XVALUES + " DOUBLE, " + YVALUES + " DOUBLE ); ";
+    private static final String CREATE_TABLE_4 =  "CREATE TABLE " + TABLE_NAME4 + "(" + IDVALUES + " INTEGER PRIMARY KEY AUTOINCREMENT, " + XVALUES + " DOUBLE, " + YVALUES + " DOUBLE ); ";
 
 
 
@@ -57,7 +57,7 @@ public class MyHelperGlutes extends SQLiteOpenHelper {
 
     }
 
-    public boolean insertData1(int x, int y) {
+    public boolean insertData1(double x,double y) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(XVALUES, x);
@@ -70,7 +70,7 @@ public class MyHelperGlutes extends SQLiteOpenHelper {
         }
     }
 
-    public boolean insertData2(int x, int y) {
+    public boolean insertData2(double x, double y) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(XVALUES, x);
@@ -82,7 +82,7 @@ public class MyHelperGlutes extends SQLiteOpenHelper {
             return true;
         }
     }
-    public boolean insertData3(int x, int y) {
+    public boolean insertData3(double x, double y) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(XVALUES, x);
@@ -95,7 +95,7 @@ public class MyHelperGlutes extends SQLiteOpenHelper {
         }
     }
 
-    public boolean insertData4(int x, int y) {
+    public boolean insertData4(double x, double y) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(XVALUES, x);
@@ -131,17 +131,6 @@ public class MyHelperGlutes extends SQLiteOpenHelper {
         return data;
     }
 
-    public boolean updateData1(String id, int x, int y){
-        mySqLiteDatabase=this.getWritableDatabase();
-        ContentValues contentValues = new ContentValues();
-        contentValues.put(IDVALUES, id);
-        contentValues.put(XVALUES, x);
-        contentValues.put(YVALUES, y);
-
-        mySqLiteDatabase.update(TABLE_NAME1, contentValues, "ID = ?", new String[] {id});
-
-        return true;
-    }
 
     public Integer deleteData1(String id){
         mySqLiteDatabase=this.getWritableDatabase();

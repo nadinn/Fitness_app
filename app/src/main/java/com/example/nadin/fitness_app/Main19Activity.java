@@ -84,9 +84,6 @@ public class Main19Activity extends AppCompatActivity {
             }
         });
 
-
-
-
     }
     /**
      * method for adding data to the database from the two EditText
